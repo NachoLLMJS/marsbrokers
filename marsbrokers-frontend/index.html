@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080c17" />
   <meta name="description" content="MarsBrokers — NFT market, swap and token-bound broker protocol designed for Flap" />
-  <title>MarsBrokers — Interplanetary Exchange</title>
+  <title>Marsbrokers</title>
   <link rel="icon" href="/marsbrokers-logo-64.png?v=2" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="/marsbrokers-logo-180.png?v=2" />
   <script>
@@ -143,15 +143,85 @@
       </section>
 
       <section class="module" id="module-swap" data-module-panel="swap">
-        <div class="module-header"><div><span class="overline">PANCAKESWAP V3 ROUTING</span><h1>Swap BNB ↔ MarsCoin</h1><p>Trade against existing on-chain liquidity through the official PancakeSwap router</p></div><div class="route-badge"><i></i>LIVE DEX QUOTE</div></div>
-        <div class="swap-layout">
-          <div class="swap-card operation-card">
-            <div class="card-heading"><div><b>BNB ↔ MARSCOIN</b><small>WBNB / USDT / MARSCOIN</small></div><span class="status-neutral">PANCAKE V3</span></div>
-            <div class="broker-route-fields"><label>SWAP DIRECTION<select id="marsSwapDirection"><option value="bnbToMars">BNB → MARSCOIN</option><option value="marsToBnb">MARSCOIN → BNB</option></select></label><label>AMOUNT IN<input id="marsSwapAmount" inputmode="decimal" placeholder="0.01"></label><label>MINIMUM AMOUNT OUT<input id="marsSwapMinimum" inputmode="decimal" placeholder="Read quote first"></label><label>LIVE DEX QUOTE<div class="vault-readonly"><b id="swapQuoteOutput">—</b><small id="swapLiquidityStatus">Official PancakeSwap QuoterV2</small></div></label></div>
-            <div class="stake-actions"><button class="ghost compact" id="refreshSwapQuote" disabled>READ LIVE QUOTE</button><button class="ghost compact" id="approveClaimSwap" disabled>APPROVE MARSCOIN</button><button class="primary compact" id="executeClaimSwap" disabled>EXECUTE SWAP</button></div>
-            <div class="risk-note"><b>DEX EXECUTION</b><p>The quote comes from PancakeSwap V3. Minimum output uses 0.5% slippage protection and transactions expire after 20 minutes. MarsCoin approval is only required for MarsCoin → BNB.</p></div>
+        <div class="module-header swap-module-header"><div><span class="overline">SWAP DESK</span><h1>Swap tokens</h1><p id="swapModuleDescription">Exchange BNB and MARSCOIN through live PancakeSwap V3 liquidity</p></div><div class="route-badge"><i></i>BNB CHAIN</div></div>
+        <div class="swap-stage">
+          <div class="normal-swap-card operation-card">
+            <div class="normal-swap-head">
+              <div><b>SWAP</b><small id="swapModeStatus">LIVE PANCAKESWAP V3 ROUTE</small></div>
+              <div class="swap-head-tools">
+                <div class="swap-mode-tabs" role="tablist" aria-label="Swap asset type">
+                  <button id="swapCryptoTab" class="active" type="button" role="tab" aria-selected="true" aria-controls="swapCryptoPanel">CRYPTO</button>
+                  <button id="swapStocksTab" type="button" role="tab" aria-selected="false" aria-controls="swapStocksPanel">STOCK TOKENS</button>
+                </div>
+                <span class="swap-slippage">0.5% SLIPPAGE</span>
+              </div>
+            </div>
+            <div class="swap-mode-panel" id="swapCryptoPanel" role="tabpanel" aria-labelledby="swapCryptoTab">
+            <select id="marsSwapDirection" class="swap-direction-select" aria-label="Swap direction"><option value="bnbToMars">BNB → MARSCOIN</option><option value="marsToBnb">MARSCOIN → BNB</option></select>
+
+            <div class="swap-asset-box swap-pay-box">
+              <div class="swap-box-label"><span>YOU PAY</span><small id="swapPayBalance">BALANCE —</small></div>
+              <div class="swap-amount-line">
+                <input id="marsSwapAmount" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-label="Amount to pay" />
+                <div class="swap-token-pill"><i id="swapPayIcon" class="swap-token-icon bnb-token">B</i><div><b id="swapPaySymbol">BNB</b><small>BNB CHAIN</small></div></div>
+              </div>
+              <small class="swap-fiat-hint">Enter the amount you want to swap</small>
+            </div>
+
+            <button class="swap-flip-button" id="swapFlipDirection" type="button" aria-label="Reverse swap direction" title="Reverse swap direction">↓</button>
+
+            <div class="swap-asset-box swap-receive-box">
+              <div class="swap-box-label"><span>YOU RECEIVE</span><small>LIVE QUOTE</small></div>
+              <div class="swap-amount-line">
+                <div class="swap-output" id="swapQuoteOutput">0.00</div>
+                <div class="swap-token-pill"><i id="swapReceiveIcon" class="swap-token-icon mars-token">M</i><div><b id="swapReceiveSymbol">MARSCOIN</b><small>BNB CHAIN</small></div></div>
+              </div>
+              <small class="swap-fiat-hint" id="swapLiquidityStatus">Official PancakeSwap QuoterV2</small>
+            </div>
+
+            <input id="marsSwapMinimum" type="hidden" />
+            <div class="swap-details">
+              <div><span>ROUTE</span><b id="swapRouteLabel">BNB → WBNB → USDT → MARSCOIN</b></div>
+              <div><span>MINIMUM RECEIVED</span><b id="swapMinimumDisplay">Quote required</b></div>
+              <div><span>NETWORK FEE</span><b>Calculated in wallet</b></div>
+            </div>
+
+            <button class="swap-refresh-action" id="refreshSwapQuote" disabled>REFRESH LIVE QUOTE</button>
+            <button class="swap-approval-action" id="approveClaimSwap" disabled hidden>APPROVE MARSCOIN</button>
+            <button class="swap-primary-action" id="executeClaimSwap">CONNECT WALLET</button>
+            <p class="swap-protection-note"><i></i> Protected by 0.5% slippage · Quote expires after 20 minutes</p>
+            </div>
+
+            <div class="swap-mode-panel stock-swap-panel" id="swapStocksPanel" role="tabpanel" aria-labelledby="swapStocksTab" hidden>
+              <div class="swap-asset-box swap-pay-box">
+                <div class="swap-box-label"><span>YOU PAY</span><small>PLANNED STOCK SET</small></div>
+                <div class="swap-amount-line stock-amount-line">
+                  <input id="stockSwapAmount" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-label="Stock token amount" />
+                  <label class="swap-token-pill stock-token-selector"><i class="swap-token-icon stock-token">$</i><span><b id="stockSwapSymbol">$TSLA</b><small>STOCK TOKEN</small></span><select id="stockSwapToken" aria-label="Stock token"><option value="$TSLA">$TSLA</option><option value="$NVDA">$NVDA</option><option value="$SPCX">$SPCX</option><option value="$GME">$GME</option></select></label>
+                </div>
+                <small class="swap-fiat-hint">Token contracts will be enabled after deployment and liquidity verification</small>
+              </div>
+
+              <div class="swap-stock-arrow" aria-hidden="true">↓</div>
+
+              <div class="swap-asset-box swap-receive-box">
+                <div class="swap-box-label"><span>YOU RECEIVE</span><small>BNB SETTLEMENT</small></div>
+                <div class="swap-amount-line">
+                  <div class="swap-output">0.00</div>
+                  <div class="swap-token-pill"><i class="swap-token-icon bnb-token">B</i><div><b>BNB</b><small>BNB CHAIN</small></div></div>
+                </div>
+                <small class="swap-fiat-hint">Quote becomes available when the stock pool is configured</small>
+              </div>
+
+              <div class="swap-details">
+                <div><span>ROUTE</span><b id="stockSwapRoute">$TSLA → BNB</b></div>
+                <div><span>LIQUIDITY</span><b>Not configured</b></div>
+                <div><span>NETWORK</span><b>BNB Chain Mainnet</b></div>
+              </div>
+              <button class="swap-primary-action" id="executeStockSwap" disabled>STOCK ROUTE NOT CONFIGURED</button>
+              <p class="swap-protection-note stock-route-note"><i></i> Activates only after token contracts and on-chain liquidity are verified</p>
+            </div>
           </div>
-          <div class="route-visual swap-art-panel"><img class="swap-art" src="/swap-orbital-router.webp" alt="Pixel-art MarsBrokers terminal routing BNB and MarsCoin through PancakeSwap"/><div class="swap-art-shade"></div><div class="swap-art-copy"><span>BNB → WBNB → USDT → MARSCOIN</span><h3>Live MarsCoin<br/>market routing</h3><p>Quotes and settlement come directly from PancakeSwap V3 liquidity on BNB Chain.</p></div></div>
         </div>
       </section>
 

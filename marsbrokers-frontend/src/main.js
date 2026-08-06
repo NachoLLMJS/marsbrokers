@@ -22,7 +22,7 @@ const contractActionIds = [
   'mintBroker', 'approveNftStake', 'stakeNft', 'unstakeNft',
   'approveTokenStake', 'stakeToken', 'unstakeToken', 'modalBuy', 'myBrokers', 'listBroker',
   'approveBrokerAsset', 'executeBrokerRoute', 'claimStockAction',
-  'refreshSwapQuote', 'approveClaimSwap', 'executeClaimSwap', 'selectMarsClaim'
+  'refreshSwapQuote', 'approveClaimSwap', 'selectMarsClaim'
 ];
 
 function setContractActionsEnabled(enabled) {
@@ -37,6 +37,7 @@ function setContractActionsEnabled(enabled) {
 }
 
 setContractActionsEnabled(false);
+syncMarsSwapPresentation();
 if (deployment.marscoin) {
   $('#claimStockToken').value = deployment.marscoin;
 }
@@ -91,7 +92,12 @@ const chineseTerminology = new Map([
   ['附属NFT', '抵押 NFT'],
   ['地位', '状态'],
   ['敏', '最低'],
-  ['最大限度', '最高']
+  ['最大限度', '最高'],
+  ['滑倒', '滑点'],
+  ['交换办公桌', '兑换台'],
+  ['交换代币', '兑换代币'],
+  ['应付金额', '支付金额'],
+  ['反向交换方向', '切换兑换方向']
 ]);
 
 function correctChineseTerminology(root = document.body) {
@@ -162,8 +168,7 @@ function showModule(name) {
   $$('.nav-item').forEach((button) => button.classList.toggle('active', button.dataset.module === name));
   sidebar.classList.remove('open');
   window.scrollTo({ top: 0, behavior: 'instant' });
-  const moduleTitles = { mint: 'Mint Broker NFT', market: 'NFT Market', swap: 'Swap', rewards: 'Claim Center', box: 'Broker Box', vault: 'Vault', options: 'Options Desk', referrals: 'Referrals', docs: 'Docs' };
-  document.title = name === 'hub' ? 'MarsBrokers — Interplanetary Exchange' : `${moduleTitles[name] || name} — MarsBrokers`;
+  document.title = 'Marsbrokers';
   history.replaceState(null, '', name === 'hub' ? location.pathname : `#${name}`);
 }
 
@@ -205,6 +210,7 @@ async function connectWallet() {
     if (!$('#brokerRouteRecipient').value) $('#brokerRouteRecipient').value = walletAddress;
     bindProviderListeners();
     setContractActionsEnabled(true);
+    syncMarsSwapPresentation();
     refreshOnchainMarket().catch((error) => console.error('Market state refresh failed', error));
     showToast('Wallet connected · Contracts verified');
   } catch (error) {
@@ -226,6 +232,7 @@ function bindProviderListeners() {
     $('#mintConnect').textContent = 'CONNECT WALLET';
     $('#mintConnect').disabled = false;
     setContractActionsEnabled(false);
+syncMarsSwapPresentation();
   });
   window.ethereum.on('chainChanged', () => {
     contractSession = null;
@@ -235,6 +242,7 @@ function bindProviderListeners() {
     $('#mintConnect').textContent = 'CONNECT WALLET';
     $('#mintConnect').disabled = false;
     setContractActionsEnabled(false);
+syncMarsSwapPresentation();
     showToast('Network changed · Reconnect and verify contracts');
   });
 }
@@ -463,22 +471,94 @@ $('#claimStockAction').addEventListener('click', (event) => {
   });
 });
 
+function setSwapMode(mode) {
+  const stocks = mode === 'stocks';
+  $('#swapCryptoTab').classList.toggle('active', !stocks);
+  $('#swapStocksTab').classList.toggle('active', stocks);
+  $('#swapCryptoTab').setAttribute('aria-selected', String(!stocks));
+  $('#swapStocksTab').setAttribute('aria-selected', String(stocks));
+  $('#swapCryptoPanel').hidden = stocks;
+  $('#swapStocksPanel').hidden = !stocks;
+  $('.normal-swap-card').classList.toggle('stock-mode', stocks);
+  $('#swapModeStatus').textContent = stocks ? 'STOCK TOKEN → BNB ROUTING' : 'LIVE PANCAKESWAP V3 ROUTE';
+  $('#swapModuleDescription').textContent = stocks
+    ? 'Tokenized stock routes will settle into BNB after contracts and liquidity are verified'
+    : 'Exchange BNB and MARSCOIN through live PancakeSwap V3 liquidity';
+}
+
+$('#swapCryptoTab').addEventListener('click', () => setSwapMode('crypto'));
+$('#swapStocksTab').addEventListener('click', () => setSwapMode('stocks'));
+$('#stockSwapToken').addEventListener('change', (event) => {
+  $('#stockSwapSymbol').textContent = event.currentTarget.value;
+  $('#stockSwapRoute').textContent = `${event.currentTarget.value} → BNB`;
+});
+
+function syncMarsSwapPresentation({ resetQuote = false } = {}) {
+  const direction = $('#marsSwapDirection').value;
+  const bnbToMars = direction === 'bnbToMars';
+  const paySymbol = bnbToMars ? 'BNB' : 'MARSCOIN';
+  const receiveSymbol = bnbToMars ? 'MARSCOIN' : 'BNB';
+  const amount = $('#marsSwapAmount').value.trim();
+
+  $('#swapPaySymbol').textContent = paySymbol;
+  $('#swapReceiveSymbol').textContent = receiveSymbol;
+  $('#swapPayIcon').textContent = bnbToMars ? 'B' : 'M';
+  $('#swapReceiveIcon').textContent = bnbToMars ? 'M' : 'B';
+  $('#swapPayIcon').className = `swap-token-icon ${bnbToMars ? 'bnb-token' : 'mars-token'}`;
+  $('#swapReceiveIcon').className = `swap-token-icon ${bnbToMars ? 'mars-token' : 'bnb-token'}`;
+  $('#swapRouteLabel').textContent = bnbToMars
+    ? 'BNB → WBNB → USDT → MARSCOIN'
+    : 'MARSCOIN → USDT → WBNB → BNB';
+  $('#swapPayBalance').textContent = contractSession ? 'WALLET CONNECTED' : 'BALANCE —';
+
+  if (resetQuote) {
+    $('#swapQuoteOutput').textContent = '0.00';
+    $('#marsSwapMinimum').value = '';
+    $('#swapMinimumDisplay').textContent = 'Quote required';
+    $('#swapLiquidityStatus').textContent = 'Official PancakeSwap QuoterV2';
+  }
+
+  const refresh = $('#refreshSwapQuote');
+  const approval = $('#approveClaimSwap');
+  const primary = $('#executeClaimSwap');
+  refresh.disabled = !contractSession || !amount;
+  approval.hidden = bnbToMars || !contractSession;
+  approval.disabled = !contractSession || !amount || bnbToMars;
+
+  if (!contractSession) {
+    primary.disabled = false;
+    primary.textContent = 'CONNECT WALLET';
+  } else if (!amount) {
+    primary.disabled = true;
+    primary.textContent = 'ENTER AN AMOUNT';
+  } else {
+    primary.disabled = false;
+    primary.textContent = `SWAP ${paySymbol} FOR ${receiveSymbol}`;
+  }
+}
+
 async function refreshMarsSwapQuote() {
   if (!contractSession) throw new Error('Connect a verified wallet first');
   const direction = $('#marsSwapDirection').value;
   const amount = requiredValue('#marsSwapAmount', 'Swap amount');
   const quote = await actions.readMarsSwapQuote(contractSession, direction, amount);
-  const outputSymbol = direction === 'bnbToMars' ? 'MarsCoin' : 'BNB';
-  $('#swapQuoteOutput').textContent = `${quote.formattedOut} ${outputSymbol}`;
+  const outputSymbol = direction === 'bnbToMars' ? 'MARSCOIN' : 'BNB';
+  $('#swapQuoteOutput').textContent = quote.formattedOut;
   $('#swapLiquidityStatus').textContent = 'Live route · PancakeSwap V3';
   $('#marsSwapMinimum').value = quote.formattedMinimum;
+  $('#swapMinimumDisplay').textContent = `${quote.formattedMinimum} ${outputSymbol}`;
   return quote;
 }
 $('#marsSwapDirection').addEventListener('change', () => {
-  $('#swapQuoteOutput').textContent = '—';
-  $('#marsSwapMinimum').value = '';
-  $('#swapLiquidityStatus').textContent = 'Official PancakeSwap QuoterV2';
-  $('#approveClaimSwap').disabled = !contractSession || $('#marsSwapDirection').value !== 'marsToBnb';
+  syncMarsSwapPresentation({ resetQuote: true });
+});
+$('#marsSwapAmount').addEventListener('input', () => {
+  syncMarsSwapPresentation({ resetQuote: true });
+});
+$('#swapFlipDirection').addEventListener('click', () => {
+  $('#marsSwapDirection').value = $('#marsSwapDirection').value === 'bnbToMars' ? 'marsToBnb' : 'bnbToMars';
+  $('#marsSwapDirection').dispatchEvent(new Event('change'));
+  $('#marsSwapAmount').focus();
 });
 $('#refreshSwapQuote').addEventListener('click', (event) => {
   runContractAction(event.currentTarget, 'READING…', 'Live PancakeSwap quote loaded', refreshMarsSwapQuote);
@@ -490,6 +570,10 @@ $('#approveClaimSwap').addEventListener('click', (event) => {
   });
 });
 $('#executeClaimSwap').addEventListener('click', (event) => {
+  if (!contractSession) {
+    connectWallet();
+    return;
+  }
   runContractAction(event.currentTarget, 'SWAPPING…', 'PancakeSwap transaction confirmed on-chain', async () => {
     const direction = $('#marsSwapDirection').value;
     const amount = requiredValue('#marsSwapAmount', 'Swap amount');
