@@ -1,0 +1,434 @@
+[
+  {
+    "id": "MB-001-BNB",
+    "number": 1,
+    "sector": "BNB",
+    "name": "Martian 001",
+    "image": "/martians/001_martian_bnb.webp",
+    "stock": {
+      "symbol": "AAPL",
+      "name": "Apple",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AAPL",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-001-TESLA",
+    "number": 1,
+    "sector": "TESLA",
+    "name": "Martian 001",
+    "image": "/martians/001_martian_tesla.webp",
+    "stock": {
+      "symbol": "AAPL",
+      "name": "Apple",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AAPL",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-002-BNB",
+    "number": 2,
+    "sector": "BNB",
+    "name": "Martian 002",
+    "image": "/martians/002_martian_bnb.webp",
+    "stock": {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AMZN",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-002-NVIDIA",
+    "number": 2,
+    "sector": "NVIDIA",
+    "name": "Martian 002",
+    "image": "/martians/002_martian_nvidia.webp",
+    "stock": {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AMZN",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-003-BNB",
+    "number": 3,
+    "sector": "BNB",
+    "name": "Martian 003",
+    "image": "/martians/003_martian_bnb.webp",
+    "stock": {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "NVDA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-003-SPACEX",
+    "number": 3,
+    "sector": "SPACEX",
+    "name": "Martian 003",
+    "image": "/martians/003_martian_spacex.webp",
+    "stock": {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "NVDA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-004-BNB",
+    "number": 4,
+    "sector": "BNB",
+    "name": "Martian 004",
+    "image": "/martians/004_martian_bnb.webp",
+    "stock": {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "MSFT",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-004-TESLA",
+    "number": 4,
+    "sector": "TESLA",
+    "name": "Martian 004",
+    "image": "/martians/004_martian_tesla.webp",
+    "stock": {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "MSFT",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-005-BNB",
+    "number": 5,
+    "sector": "BNB",
+    "name": "Martian 005",
+    "image": "/martians/005_martian_bnb.webp",
+    "stock": {
+      "symbol": "COST",
+      "name": "Costco",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "COST",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-005-NVIDIA",
+    "number": 5,
+    "sector": "NVIDIA",
+    "name": "Martian 005",
+    "image": "/martians/005_martian_nvidia.webp",
+    "stock": {
+      "symbol": "COST",
+      "name": "Costco",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "COST",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-006-BNB",
+    "number": 6,
+    "sector": "BNB",
+    "name": "Martian 006",
+    "image": "/martians/006_martian_bnb.webp",
+    "stock": {
+      "symbol": "PLTR",
+      "name": "Palantir",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "PLTR",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-006-SPACEX",
+    "number": 6,
+    "sector": "SPACEX",
+    "name": "Martian 006",
+    "image": "/martians/006_martian_spacex.webp",
+    "stock": {
+      "symbol": "PLTR",
+      "name": "Palantir",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "PLTR",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-007-BNB",
+    "number": 7,
+    "sector": "BNB",
+    "name": "Martian 007",
+    "image": "/martians/007_martian_bnb.webp",
+    "stock": {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AMD",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-007-NVIDIA",
+    "number": 7,
+    "sector": "NVIDIA",
+    "name": "Martian 007",
+    "image": "/martians/007_martian_nvidia.webp",
+    "stock": {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AMD",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-007-SPACEX",
+    "number": 7,
+    "sector": "SPACEX",
+    "name": "Martian 007",
+    "image": "/martians/007_martian_spacex.webp",
+    "stock": {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "AMD",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-008-BNB",
+    "number": 8,
+    "sector": "BNB",
+    "name": "Martian 008",
+    "image": "/martians/008_martian_bnb.webp",
+    "stock": {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "TSLA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-008-NVIDIA",
+    "number": 8,
+    "sector": "NVIDIA",
+    "name": "Martian 008",
+    "image": "/martians/008_martian_nvidia.webp",
+    "stock": {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "TSLA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-008-SPACEX",
+    "number": 8,
+    "sector": "SPACEX",
+    "name": "Martian 008",
+    "image": "/martians/008_martian_spacex.webp",
+    "stock": {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "TSLA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-008-TESLA",
+    "number": 8,
+    "sector": "TESLA",
+    "name": "Martian 008",
+    "image": "/martians/008_martian_tesla.webp",
+    "stock": {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "TSLA",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-009-BNB",
+    "number": 9,
+    "sector": "BNB",
+    "name": "Martian 009",
+    "image": "/martians/009_martian_bnb.webp",
+    "stock": {
+      "symbol": "GME",
+      "name": "GameStop",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "GME",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-009-NVIDIA",
+    "number": 9,
+    "sector": "NVIDIA",
+    "name": "Martian 009",
+    "image": "/martians/009_martian_nvidia.webp",
+    "stock": {
+      "symbol": "GME",
+      "name": "GameStop",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "GME",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-009-SPACEX",
+    "number": 9,
+    "sector": "SPACEX",
+    "name": "Martian 009",
+    "image": "/martians/009_martian_spacex.webp",
+    "stock": {
+      "symbol": "GME",
+      "name": "GameStop",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "GME",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-009-TESLA",
+    "number": 9,
+    "sector": "TESLA",
+    "name": "Martian 009",
+    "image": "/martians/009_martian_tesla.webp",
+    "stock": {
+      "symbol": "GME",
+      "name": "GameStop",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "GME",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-010-BNB",
+    "number": 10,
+    "sector": "BNB",
+    "name": "Martian 010",
+    "image": "/martians/010_martian_bnb.webp",
+    "stock": {
+      "symbol": "USAR",
+      "name": "USA Rare Earth",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "USAR",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-010-NVIDIA",
+    "number": 10,
+    "sector": "NVIDIA",
+    "name": "Martian 010",
+    "image": "/martians/010_martian_nvidia.webp",
+    "stock": {
+      "symbol": "USAR",
+      "name": "USA Rare Earth",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "USAR",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-010-SPACEX",
+    "number": 10,
+    "sector": "SPACEX",
+    "name": "Martian 010",
+    "image": "/martians/010_martian_spacex.webp",
+    "stock": {
+      "symbol": "USAR",
+      "name": "USA Rare Earth",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "USAR",
+      "MARSCOIN"
+    ]
+  },
+  {
+    "id": "MB-010-TESLA",
+    "number": 10,
+    "sector": "TESLA",
+    "name": "Martian 010",
+    "image": "/martians/010_martian_tesla.webp",
+    "stock": {
+      "symbol": "USAR",
+      "name": "USA Rare Earth",
+      "type": "Flap tokenized stock"
+    },
+    "rewards": [
+      "USAR",
+      "MARSCOIN"
+    ]
+  }
+]

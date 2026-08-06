@@ -1,0 +1,169 @@
+{
+  "status": "complete",
+  "config": {
+    "chainId": 56,
+    "deployer": "0xF215614466D02F698d6dD0d9d940d4f51CF892a4",
+    "treasury": "0xF215614466D02F698d6dD0d9d940d4f51CF892a4",
+    "metadataCID": "bafybeihafbsjsb76wim3cgbfzhv73touwcewdkbba2xtxhcikrx4wcqgfm",
+    "genesisAndList": true,
+    "marscoinAddress": "0xfe189e97832da1573e4e4ff034f4ffc3a15c7777",
+    "allowedTokens": [
+      "0xfe189e97832da1573e4e4ff034f4ffc3a15c7777"
+    ]
+  },
+  "configHash": "0x58aaa06c70738a0debb4126c3fb82eeaa8911ff30e151f7b50b6b98e7c83d594",
+  "contracts": {
+    "registry": {
+      "status": "confirmed",
+      "factoryName": "ERC6551Registry",
+      "nonce": 0,
+      "expectedAddress": "0x7f164739576A3916ac0B0ce6e565cAF23e9f0F90",
+      "initCodeHash": "0xba3e0afee9ea02dda0e8c719f56a75003e02f1004e9a63a06c0bef045b816a63",
+      "preparedAt": "2026-08-06T07:36:19.499Z",
+      "txHash": "0x1e2c4fe55ec9b469bf34124d12bfc86135633bda027747d2d503b47b755f40f5",
+      "address": "0x7f164739576A3916ac0B0ce6e565cAF23e9f0F90",
+      "blockNumber": 114314341,
+      "gasUsed": "182209",
+      "effectiveGasPrice": "52000010"
+    },
+    "accountImplementation": {
+      "status": "confirmed",
+      "factoryName": "MarsBrokerAccount",
+      "nonce": 1,
+      "expectedAddress": "0x39D7F5e3aA6a31FaAe45571EA68ECF7D396cb441",
+      "initCodeHash": "0xd9c2c3c02ff63efd85769c25e0d6292762267037ec6f6ac4cca9b0ae1f54f648",
+      "preparedAt": "2026-08-06T07:36:23.122Z",
+      "txHash": "0x367b23d1f25f8dd1827a784ee991c711381eb41d2b2dfa4559d5b3c8b422c052",
+      "address": "0x39D7F5e3aA6a31FaAe45571EA68ECF7D396cb441",
+      "blockNumber": 114314348,
+      "gasUsed": "981784",
+      "effectiveGasPrice": "55000000"
+    },
+    "nft": {
+      "status": "confirmed",
+      "factoryName": "MarsBrokersNFT",
+      "nonce": 2,
+      "expectedAddress": "0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F",
+      "initCodeHash": "0x6da055d97dbc1318fb39ad499fe96a5c25d9840a5f7a5c5507e4d1665023288f",
+      "preparedAt": "2026-08-06T07:36:25.932Z",
+      "txHash": "0xb8e0dfd0e05b4833f638de184eee98fb42d9f29086e67929acb46baae9403ebb",
+      "address": "0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F",
+      "blockNumber": 114314354,
+      "gasUsed": "3124359",
+      "effectiveGasPrice": "50000000"
+    },
+    "staking": {
+      "status": "confirmed",
+      "factoryName": "MarsBrokersStaking",
+      "nonce": 3,
+      "expectedAddress": "0xd30425269276F023085cF09EB153Cc8f333d5c90",
+      "initCodeHash": "0xc82cb9a71e5a3faaa6673bace555b7334178f9feb778d73cd2e7f40539d402db",
+      "preparedAt": "2026-08-06T07:36:28.818Z",
+      "txHash": "0x875583afbe41a003dff52b03d58ee902135e4323b190a365b4f226a4e3712bb3",
+      "address": "0xd30425269276F023085cF09EB153Cc8f333d5c90",
+      "blockNumber": 114314361,
+      "gasUsed": "2212985",
+      "effectiveGasPrice": "51030000"
+    },
+    "market": {
+      "status": "confirmed",
+      "factoryName": "MarsBrokersMarket",
+      "nonce": 4,
+      "expectedAddress": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+      "initCodeHash": "0x19dc5abe2dbfd4286a71592510012f9ec903db2dad4868256823bd21ba271e94",
+      "preparedAt": "2026-08-06T07:36:32.177Z",
+      "txHash": "0xeb40a337ac7f5d7aab71833953692104ec5a83f3178429c1453a74198ea128de",
+      "address": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+      "blockNumber": 114314368,
+      "gasUsed": "1075252",
+      "effectiveGasPrice": "50001690"
+    },
+    "router": {
+      "status": "confirmed",
+      "factoryName": "MarsBrokerRouter",
+      "nonce": 5,
+      "expectedAddress": "0x93dd0Dc8ca554a19aF488d30862D027b129d7Fd5",
+      "initCodeHash": "0x37a0f978daf6836edebd2b6cdc46f080ecc68e523a06944cebc3f3c04d5e6ef8",
+      "preparedAt": "2026-08-06T07:36:34.971Z",
+      "txHash": "0xed6ece6d94d8fa2059bf9c24a24fdddf2479f699554e793b581df9e4f45cf110",
+      "address": "0x93dd0Dc8ca554a19aF488d30862D027b129d7Fd5",
+      "blockNumber": 114314374,
+      "gasUsed": "511180",
+      "effectiveGasPrice": "60000000"
+    }
+  },
+  "actions": {
+    "approveMarket": {
+      "status": "confirmed",
+      "nonce": 6,
+      "to": "0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F",
+      "dataHash": "0x15d453b19884c1356dda51d43cca8df7212fb53454e7327b61700285b3bb0402",
+      "value": "0",
+      "preparedAt": "2026-08-06T07:36:37.839Z",
+      "txHash": "0xdc597cba3a50bbbda30a3dd616b8702484392023571972fb95e2498d40984d21",
+      "blockNumber": 114314381,
+      "gasUsed": "46260",
+      "effectiveGasPrice": "60000000"
+    },
+    "listGenesis1": {
+      "status": "confirmed",
+      "nonce": 7,
+      "to": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+      "dataHash": "0xe2393524637cc98b29a3c6ed68a6fb04bcb58aaa47c513c33c4e4ff6b51263b0",
+      "value": "0",
+      "preparedAt": "2026-08-06T07:36:41.281Z",
+      "txHash": "0xa42a0d2f5dfeb96c16867731690d694d83fdf584e3da9aad9133868a451bab95",
+      "blockNumber": 114314388,
+      "gasUsed": "151020",
+      "effectiveGasPrice": "80000000"
+    },
+    "listGenesis2": {
+      "status": "confirmed",
+      "nonce": 8,
+      "to": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+      "dataHash": "0xdb7b871cfa2d64e38442d3c0fc87d9e51b5d5ad80e4b274b4d7352b60b8f1cbf",
+      "value": "0",
+      "preparedAt": "2026-08-06T07:36:44.200Z",
+      "txHash": "0x4ae73a5cd49bcbfb80a09636dad73da29ee847ca6d03e7fe9b7229d3500f19b4",
+      "blockNumber": 114314395,
+      "gasUsed": "128426",
+      "effectiveGasPrice": "61654385"
+    },
+    "listGenesis3": {
+      "status": "confirmed",
+      "nonce": 9,
+      "to": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+      "dataHash": "0x394af562ffb05f0fda1a66b63ad443c1a60eef6eade00aeaee4ec10a10ed6921",
+      "value": "0",
+      "preparedAt": "2026-08-06T07:36:47.135Z",
+      "txHash": "0xe10b353ca8d41a193ad84f909d868b02ab07c4e81430095241d988a5a70d4c28",
+      "blockNumber": 114314402,
+      "gasUsed": "143526",
+      "effectiveGasPrice": "60000000"
+    },
+    "allow-0xfe189e97832da1573e4e4ff034f4ffc3a15c7777": {
+      "status": "confirmed",
+      "nonce": 10,
+      "to": "0xd30425269276F023085cF09EB153Cc8f333d5c90",
+      "dataHash": "0x5e8a03dde8aa770151b23bd30c7b420e15a68476576b7a918be5809c04b2354f",
+      "value": "0",
+      "preparedAt": "2026-08-06T07:36:50.652Z",
+      "txHash": "0x2f2b26bf16369ace49fd2af10362c93fa84033d75b15ff0f085d9ef50d94cfb8",
+      "blockNumber": 114314409,
+      "gasUsed": "53853",
+      "effectiveGasPrice": "74010459"
+    }
+  },
+  "createdAt": "2026-08-06T07:36:19.441Z",
+  "updatedAt": "2026-08-06T07:36:53.450Z",
+  "completedAt": "2026-08-06T07:36:53.450Z",
+  "addresses": {
+    "NFT_ADDRESS": "0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F",
+    "STAKING_ADDRESS": "0xd30425269276F023085cF09EB153Cc8f333d5c90",
+    "MARKET_ADDRESS": "0xAf04F60f3E6f7284EedCA201fD109421654aD386",
+    "ROUTER_ADDRESS": "0x93dd0Dc8ca554a19aF488d30862D027b129d7Fd5",
+    "MARSCOIN_ADDRESS": "0xfe189e97832da1573e4e4ff034f4ffc3a15c7777",
+    "ACCOUNT_IMPLEMENTATION_ADDRESS": "0x39D7F5e3aA6a31FaAe45571EA68ECF7D396cb441",
+    "REGISTRY_ADDRESS": "0x7f164739576A3916ac0B0ce6e565cAF23e9f0F90"
+  }
+}

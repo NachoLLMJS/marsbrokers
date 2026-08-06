@@ -1,0 +1,28 @@
+# Dependencies and generated output
+**/node_modules/
+**/dist/
+**/artifacts/
+**/cache/
+
+# Secrets and local environment
+**/.env
+**/.env.local
+**/*.key
+**/*.pem
+!**/.env.example
+!**/.env.production
+
+# Local-only source artwork and previews at repository root
+/*.png
+/build_mars_assets.py
+/manifest.csv
+
+# Temporary Hermes verification files
+**/.hermes-*
+**/deployments/31337.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

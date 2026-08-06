@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080c17" />
+  <meta name="description" content="MarsBrokers — NFT market, swap and token-bound broker protocol designed for Flap" />
+  <title>MarsBrokers — Interplanetary Exchange</title>
+  <link rel="icon" href="/marsbrokers-logo-64.png?v=2" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="/marsbrokers-logo-180.png?v=2" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+      <a class="brand" href="#" data-module-link="hub" aria-label="MarsBrokers hub">
+        <img class="brand-logo" src="/marsbrokers-logo-transparent.png?v=2" alt="" width="44" height="42" />
+        <span>MARS<b>BROKERS</b></span>
+      </a>
+      <div class="network-pill"><i></i><span>FLAP NETWORK</span><small>BNB CHAIN</small></div>
+      <div class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search broker, token or module" aria-label="Search" /></div>
+      <a class="x-link" href="https://x.com/Marsbrokerscoin" target="_blank" rel="noopener noreferrer" aria-label="MarsBrokers on X"><span>𝕏</span><b>X / TWITTER</b></a>
+      <button class="wallet-btn" id="walletButton"><i></i><span id="walletLabel">CONNECT WALLET</span></button>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <nav aria-label="MarsBrokers modules">
+        <button class="nav-item active" data-module="hub"><span>⌂</span><b>Command</b></button>
+        <button class="nav-item" data-module="market"><span>◈</span><b>NFT Market</b></button>
+        <button class="nav-item" data-module="swap"><span>⇄</span><b>Swap</b></button>
+        <button class="nav-item" data-module="rewards"><span>✦</span><b>Claim Center</b></button>
+        <button class="nav-item" data-module="box"><span>⬡</span><b>Broker Box</b></button>
+        <button class="nav-item" data-module="vault"><span>▣</span><b>Vault</b></button>
+
+        <button class="nav-item" data-module="options"><span>⌁</span><b>Options</b></button>
+        <button class="nav-item" data-module="referrals"><span>⌘</span><b>Referrals</b></button>
+        <button class="nav-item" data-module="docs"><span>?</span><b>Docs</b></button>
+      </nav>
+      <div class="side-bottom"><span class="pulse"></span><div><b>FEE ROUTER</b><small>Stocks → broker TBA</small></div></div>
+    </aside>
+
+    <main class="workspace">
+      <section class="module active" id="module-hub" data-module-panel="hub">
+        <div class="command-deck">
+          <div class="deck-grid" aria-hidden="true"></div>
+          <div class="hero-copy">
+            <div class="kicker"><span>MARKET COMMAND / FLAP</span><i></i><span>DECK 01</span></div>
+            <h1>Your broker<br/>Your market<br/><em>operator</em></h1>
+            <p>MarsBrokers launches a token through Flap, converts protocol fees into each broker's predetermined tokenized stock and routes the purchased assets to its ERC-6551 wallet</p>
+            <div class="reward-rail"><span><small>FLAP FEE RAIL</small><b>FEES BUY STOCK</b></span><i>→</i><span><small>BROKER RAIL</small><b>STOCK TO TBA</b></span></div>
+            <div class="hero-actions"><button class="primary" data-module-link="market">TRADE BROKERS <span>↗</span></button><button class="ghost" data-module-link="rewards">OPEN CLAIM CENTER <span>✦</span></button></div>
+          </div>
+
+          <div class="broker-formation" aria-label="Featured MarsBrokers">
+            <button class="formation-card fc-left" data-feature-id="MB-003-BNB"><img src="/martians/003_martian_bnb.webp" alt="Martian 003"/><span><b>#003</b><small>$NVDA + MARS</small></span></button>
+            <button class="formation-card fc-main" data-feature-id="MB-008-SPACEX"><div class="scan-line"></div><img src="/martians/008_martian_spacex.webp" alt="Martian 008"/><span><b>MARTIAN #008</b><small>$TSLA + MARSCOIN</small></span></button>
+            <button class="formation-card fc-right" data-feature-id="MB-009-NVIDIA"><img src="/martians/009_martian_nvidia.webp" alt="Martian 009"/><span><b>#009</b><small>$GME + MARS</small></span></button>
+            <div class="formation-orbit o1"></div><div class="formation-orbit o2"></div>
+          </div>
+
+          <aside class="command-console">
+            <div class="console-head"><span>SELECTED OPERATOR</span><i>LIVE UI</i></div>
+            <div class="operator-id"><b>MB-008</b><span>GENESIS</span></div>
+            <div class="console-assets"><div><small>FEE-FUNDED STOCK</small><b>$TSLA</b><span>Purchased through Flap flow</span></div><div><small>ASSET DESTINATION</small><b>ERC-6551</b><span>Broker-controlled wallet</span></div></div>
+            <div class="console-route"><span>FLAP FEES</span><i></i><span>BUY STOCK</span><i></i><span>BROKER TBA</span></div>
+            <div class="console-actions"><button data-module-link="market">MARKET</button><button data-module-link="swap">SWAP</button><button data-module-link="vault">VAULT</button><button data-module-link="box">BOX</button></div>
+          </aside>
+
+          <div class="stock-tape"><span>001 · $AAPL</span><span>002 · $AMZN</span><span>003 · $NVDA</span><span>004 · $MSFT</span><span>005 · $COST</span><span>006 · $PLTR</span><span>007 · $AMD</span><span>008 · $TSLA</span><span>009 · $GME</span><span>010 · $USAR</span></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="protocol-card">
+            <div class="panel-label"><span>WALLET PROTOCOL</span><small>ERC-6551</small></div>
+            <div class="protocol-mark"><b>6551</b><span>TOKEN-BOUND<br/>ACCOUNT</span></div>
+            <p>Fee-funded stocks accumulate through the broker wallet and control of unclaimed benefits moves with the NFT when it is sold</p>
+          </article>
+          <article class="claim-card">
+            <div class="panel-label"><span>CLAIM CENTER</span><small>FEE BENEFITS</small></div>
+            <div class="claim-assets"><span><i>F</i><b>FEES</b><small>Generated through Flap</small></span><em>→</em><span><i>$</i><b>STOCK</b><small>Purchased for the TBA</small></span></div>
+            <button class="small-action" data-module-link="rewards">OPEN CLAIM CENTER →</button>
+          </article>
+          <article class="trade-benefits-card">
+            <div class="panel-label"><span>TRADE WITH BENEFITS</span><small>ATTACHED TO NFT</small></div>
+            <div class="benefit-flow"><span>BUY NFT</span><i>→</i><span>CONTROL TBA</span><i>→</i><span>CLAIM OR SELL</span></div>
+            <p>The owner can claim accumulated fee-funded assets or sell the NFT with its unclaimed wallet benefits included</p>
+            <button class="small-action" data-module-link="market">EXPLORE MARKET →</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="module" id="module-market" data-module-panel="market">
+        <div class="module-header"><div><span class="overline">NFT + TOKEN-BOUND BENEFITS</span><h1>NFT Market</h1><p>Trade each broker together with control of its ERC-6551 wallet and unclaimed fee-funded benefits</p></div><div class="header-actions"><button class="primary compact" id="mintBroker">MINT · 0.035 BNB</button><button class="ghost compact" id="myBrokers">MY BROKERS</button><button class="ghost compact" id="listBroker">LIST A BROKER +</button></div></div>
+        <div class="market-toolbar">
+          <div class="market-tabs"><button class="active">EXPLORE</button><button>RECENT SALES</button><button>ACTIVITY</button></div>
+          <div class="market-controls"><input id="marketSearch" placeholder="Search broker #" /><select id="marketSignal"><option value="ALL">All signals</option><option>BNB</option><option>TESLA</option><option>NVIDIA</option><option>SPACEX</option></select><select><option>Price: low to high</option><option>Recently listed</option></select></div>
+        </div>
+        <div class="preview-notice"><i></i><span>BROKER MARKET</span> Every listing includes its ERC-6551 wallet relationship and unclaimed fee-funded benefits</div>
+        <div class="market-layout">
+          <aside class="market-filters"><div class="filter-block"><b>STATUS</b><label><input type="checkbox" checked /> Buy now <span>12</span></label><label><input type="checkbox" /> Unlisted <span>15</span></label></div><div class="filter-block"><b>PRICE RANGE</b><div class="price-row"><input placeholder="Min"/><input placeholder="Max"/></div></div><div class="filter-block"><b>WALLET ASSETS</b><label><input type="checkbox" /> Contains Marscoin</label><label><input type="checkbox" /> Contains protocol assets</label></div><button class="clear-filters">CLEAR FILTERS</button></aside>
+          <div class="market-grid" id="marketGrid"></div>
+        </div>
+      </section>
+
+      <section class="module" id="module-swap" data-module-panel="swap">
+        <div class="module-header"><div><span class="overline">PANCAKESWAP V3 ROUTING</span><h1>Swap BNB ↔ MarsCoin</h1><p>Trade against existing on-chain liquidity through the official PancakeSwap router</p></div><div class="route-badge"><i></i>LIVE DEX QUOTE</div></div>
+        <div class="swap-layout">
+          <div class="swap-card operation-card">
+            <div class="card-heading"><div><b>BNB ↔ MARSCOIN</b><small>WBNB / USDT / MARSCOIN</small></div><span class="status-neutral">PANCAKE V3</span></div>
+            <div class="broker-route-fields"><label>SWAP DIRECTION<select id="marsSwapDirection"><option value="bnbToMars">BNB → MARSCOIN</option><option value="marsToBnb">MARSCOIN → BNB</option></select></label><label>AMOUNT IN<input id="marsSwapAmount" inputmode="decimal" placeholder="0.01"></label><label>MINIMUM AMOUNT OUT<input id="marsSwapMinimum" inputmode="decimal" placeholder="Read quote first"></label><label>LIVE DEX QUOTE<div class="vault-readonly"><b id="swapQuoteOutput">—</b><small id="swapLiquidityStatus">Official PancakeSwap QuoterV2</small></div></label></div>
+            <div class="stake-actions"><button class="ghost compact" id="refreshSwapQuote" disabled>READ LIVE QUOTE</button><button class="ghost compact" id="approveClaimSwap" disabled>APPROVE MARSCOIN</button><button class="primary compact" id="executeClaimSwap" disabled>EXECUTE SWAP</button></div>
+            <div class="risk-note"><b>DEX EXECUTION</b><p>The quote comes from PancakeSwap V3. Minimum output uses 0.5% slippage protection and transactions expire after 20 minutes. MarsCoin approval is only required for MarsCoin → BNB.</p></div>
+          </div>
+          <div class="route-visual swap-art-panel"><img class="swap-art" src="/swap-orbital-router.webp" alt="Pixel-art MarsBrokers terminal routing BNB and MarsCoin through PancakeSwap"/><div class="swap-art-shade"></div><div class="swap-art-copy"><span>BNB → WBNB → USDT → MARSCOIN</span><h3>Live MarsCoin<br/>market routing</h3><p>Quotes and settlement come directly from PancakeSwap V3 liquidity on BNB Chain.</p></div></div>
+        </div>
+      </section>
+
+      <section class="module" id="module-rewards" data-module-panel="rewards">
+        <div class="module-header"><div><span class="overline">TREASURY-MANAGED BENEFIT DISTRIBUTION</span><h1>Claim Center</h1><p>Claim compatible tokens after they have been deposited on-chain in the selected broker's ERC-6551 wallet</p></div><span class="preview-chip">OWNER CONTROLLED</span></div>
+        <div class="claim-center-grid">
+          <div class="operation-card claim-broker-panel"><div class="card-heading"><div><b>SELECT CLAIMING BROKER</b><small>OWNERSHIP CONTROLS THE TOKEN-BOUND WALLET</small></div><span class="status-neutral">SELECT NFT</span></div><div class="broker-selector"><img src="/martians/008_martian_spacex.webp" alt="Selected MarsBroker"/><div><span>SELECTED BROKER</span><b>NO NFT SELECTED</b><small>On-chain deposits are held by this broker TBA</small></div><button id="selectBroker">CHOOSE</button></div><div class="ownership-flow"><span>TREASURY</span><i>→</i><span>MANAGED ACQUISITION</span><i>→</i><span>TBA DEPOSIT</span></div><p class="claim-transfer-note">The owner can claim deposited assets or sell the NFT with unclaimed TBA assets included.</p></div>
+          <div class="operation-card claim-rail stock-claim"><div class="claim-rail-head"><i>$</i><div><span>ERC-6551 STOCK CLAIM</span><b>ROUTE TOKEN</b></div><small>ON-CHAIN</small></div><div class="broker-route-fields"><label>BROKER TOKEN ID<input id="claimBrokerTokenId" inputmode="numeric" placeholder="4"></label><label>ERC-20 CONTRACT<input id="claimStockToken" placeholder="0x..."></label><label>AMOUNT<input id="claimStockAmount" inputmode="decimal" placeholder="1.0"></label><label>CONTROL MODE<select id="claimControlMode"><option value="owner">NFT IN WALLET</option><option value="staked">NFT IS STAKED</option></select></label></div><button class="wide-action" id="claimStockAction" disabled>CLAIM TO CONNECTED WALLET</button></div>
+          <div class="operation-card claim-rail mars-claim"><div class="claim-rail-head"><i>M</i><div><span>OFFICIAL TOKEN</span><b>MARSCOIN</b></div><small>ERC-20 CLAIM</small></div><div class="claim-amount"><span>TOKEN CONTRACT</span><b>0xfe18…7777</b><small>Distributed to broker TBAs by the project operator</small></div><button class="wide-action" id="selectMarsClaim" disabled>CLAIM MARSCOIN FROM TBA</button></div>
+        </div>
+        <div class="distribution-panel"><div class="panel-title"><div><b>CLAIM HISTORY</b><small>TBA TOKEN EVENTS</small></div><span>ON-CHAIN HISTORY</span></div><div class="data-head"><span>BROKER</span><span>ASSET</span><span>AMOUNT</span><span>SOURCE TBA</span><span>TRANSACTION</span></div><div class="empty-table">Connect a wallet to load claim history</div></div>
+      </section>
+
+      <section class="module" id="module-box" data-module-panel="box">
+        <div class="module-header"><div><span class="overline">COSMIC ASSET DISPENSER</span><h1>Broker Box</h1><p>Seal ERC-20 assets into a broker wallet or route assets back to its current owner</p></div><span class="preview-chip">ERC-6551 ROUTING</span></div>
+        <div class="box-layout"><div class="box-machine"><div class="machine-ring"></div><div class="box-core"><img src="/martians/006_martian_spacex.webp" alt="Broker Box alien"/><span>?</span></div><div class="machine-floor"></div></div><div class="operation-card box-control"><div class="card-heading"><div><b>BROKER ASSET ROUTER</b><small>SELECT DIRECTION AND REVIEW EACH TRANSACTION</small></div><span>01</span></div><div class="destination-options"><button class="active" data-route-mode="seal"><i>◈</i><b>SEAL TO BROKER</b><small>Asset enters ERC-6551 wallet</small></button><button data-route-mode="route"><i>↗</i><b>ROUTE TO WALLET</b><small>Send asset to current owner</small></button></div><div class="broker-route-fields"><label><span>BROKER TOKEN ID</span><input id="brokerRouteTokenId" inputmode="numeric" placeholder="Token ID"/></label><label><span>ERC-20 TOKEN CONTRACT</span><input id="brokerRouteAsset" placeholder="0x…" autocomplete="off"/></label><label><span>AMOUNT</span><input id="brokerRouteAmount" inputmode="decimal" placeholder="0.00"/></label><label id="routeRecipientField"><span>DESTINATION WALLET</span><input id="brokerRouteRecipient" placeholder="0x…" autocomplete="off"/></label><label id="routeControlField"><span>TBA CONTROL</span><select id="brokerRouteControl"><option value="owner">NFT in owner wallet</option><option value="staked">NFT currently staked</option></select></label></div><div class="stake-actions"><button class="ghost compact" id="approveBrokerAsset">01 · APPROVE TOKEN</button><button class="primary compact" id="executeBrokerRoute">02 · SEAL TO BROKER</button></div><div class="risk-note"><b>ASSET AUTHORITY</b><p>Seal transfers the approved ERC-20 into the selected token-bound account. Route can only execute through the current NFT owner or the recorded staker</p></div></div></div>
+      </section>
+
+      <section class="module" id="module-vault" data-module-panel="vault">
+        <div class="module-header"><div><span class="overline">ERC-6551 COLLATERAL CONTROL</span><h1>Vault</h1><p>Use a MarsBroker as collateral or seal a verified liquidity position</p></div><span class="preview-chip">BNB SETTLEMENT</span></div>
+
+        <div class="vault-modebar">
+          <div class="vault-tabs" role="tablist" aria-label="Vault modes">
+            <button class="active" data-vault-tab="borrow" role="tab" aria-selected="true"><i>01</i><span><b>BORROW</b><small>Broker-backed credit</small></span></button>
+            <button data-vault-tab="locker" role="tab" aria-selected="false"><i>02</i><span><b>LP LOCKER</b><small>Time-locked liquidity</small></span></button>
+            <button data-vault-tab="staking" role="tab" aria-selected="false"><i>03</i><span><b>STAKING</b><small>NFT + token loyalty</small></span></button>
+          </div>
+          <div class="vault-mode-state"><i></i><span>OWNER CONTROLLED</span><small>Review before approval</small></div>
+        </div>
+
+        <div class="vault-mode-panel active" data-vault-panel="borrow">
+          <div class="vault-command-grid">
+            <section class="vault-collateral-showcase">
+              <div class="vault-panel-head"><div><span>COLLATERAL DOSSIER</span><b>SELECTED BROKER</b></div><em>POSITION BUILDER</em></div>
+              <div class="vault-broker-stage">
+                <div class="vault-art-frame"><img src="/martians/008_martian_spacex.webp" alt="MarsBroker 008 collateral reference"/><span>REFERENCE NFT</span></div>
+                <div class="vault-broker-copy">
+                  <span>MARSBROKER / ERC-6551</span>
+                  <h3>MB-008</h3>
+                  <p>Select an owned broker to load fee-funded stock holdings, unclaimed TBA benefits and collateral parameters</p>
+                  <div class="vault-asset-badges"><b>ERC-6551</b><b>$TSLA STOCK</b><b>MARSCOIN</b></div>
+                </div>
+              </div>
+              <div class="vault-dossier-grid"><div><span>ACCOUNT CONTROL</span><b>NFT OWNER</b><small>Resolved on-chain</small></div><div><span>VALUE INPUTS</span><b>NFT + TBA</b><small>Floor and held stock assets</small></div><div><span>CUSTODY MODE</span><b>VAULT</b><small>Broker collateral position</small></div></div>
+            </section>
+
+            <section class="vault-borrow-console operation-card">
+              <div class="card-heading"><div><b>BUILD BORROW POSITION</b><small>REVIEW EVERY PARAMETER BEFORE APPROVAL</small></div><span class="status-neutral">BORROW</span></div>
+              <label class="vault-broker-field"><span>01 · COLLATERAL NFT</span><div><b>NO BROKER SELECTED</b><button id="vaultSelectBroker">SELECT BROKER</button></div></label>
+              <div class="vault-form-row"><label><span>02 · LOAN ASSET</span><div class="vault-readonly"><i>⬡</i><b>BNB</b><small>Settlement asset</small></div></label><label><span>03 · BORROW AMOUNT</span><div class="inline-input"><input placeholder="0.00" inputmode="decimal"/><b>BNB</b></div></label></div>
+              <div class="vault-risk-meter"><div><span>POSITION UTILIZATION</span><b>—</b></div><i><em></em></i><small>Select a broker to load borrow limit, interest and liquidation threshold</small></div>
+              <div class="vault-summary"><div><span>AVAILABLE TO BORROW</span><b>— BNB</b></div><div><span>INTEREST RATE</span><b>—</b></div><div><span>LIQUIDATION PRICE</span><b>—</b></div></div>
+              <button class="wide-action" disabled>BORROW CONTRACT NOT DEPLOYED</button>
+            </section>
+          </div>
+          <div class="vault-safety-strip"><div><i>01</i><span><b>TBA BUNDLE CHECK</b><small>Inspect assets already held by the broker account</small></span></div><div><i>02</i><span><b>LIQUIDATION BOUNDARY</b><small>Parameters load from the verified lending contract</small></span></div><div><i>03</i><span><b>EXPLICIT APPROVAL</b><small>No NFT approval occurs before final review</small></span></div></div>
+        </div>
+
+        <div class="vault-mode-panel" data-vault-panel="locker">
+          <div class="vault-locker-grid">
+            <section class="operation-card vault-locker-form">
+              <div class="card-heading"><div><b>LOCK LIQUIDITY POSITION</b><small>PROVE DURATION AND BENEFICIARY ON-CHAIN</small></div><span class="status-neutral">LP LOCK</span></div>
+              <label class="select-field"><span>LIQUIDITY POSITION</span><select><option>No verified LP position available</option></select></label>
+              <div class="vault-form-row"><label><span>LOCK AMOUNT</span><div class="inline-input"><input placeholder="0" inputmode="numeric"/><b>LP</b></div></label><label><span>UNLOCK DATE</span><input type="date"/></label></div>
+              <label class="vault-beneficiary"><span>WITHDRAWAL BENEFICIARY</span><div><b>CONNECTED WALLET</b><small>Address loads after wallet connection</small></div></label>
+              <div class="risk-note"><b>LOCK DISCLOSURE</b><p>Locked liquidity cannot be withdrawn before the configured unlock condition</p></div>
+              <button class="wide-action" disabled>LP LOCKER NOT DEPLOYED</button>
+            </section>
+            <section class="vault-lock-visual">
+              <div class="lock-orbit"><i></i><span>LP</span><b>⌁</b></div>
+              <div><span>VERIFIABLE LOCK PATH</span><h3>Deposit<br/>prove<br/>release</h3><p>The final contract defines supported pairs, beneficiary rules and unlock execution</p></div>
+              <ol><li><b>01</b><span>VERIFY POSITION</span></li><li><b>02</b><span>SET DURATION</span></li><li><b>03</b><span>LOCK ON-CHAIN</span></li></ol>
+            </section>
+          </div>
+        </div>
+
+        <div class="vault-mode-panel" data-vault-panel="staking">
+          <div class="vault-staking-grid">
+            <section class="operation-card stake-console">
+              <div class="card-heading"><div><b>STAKE MARSBROKER NFT</b><small>LOCK THE NFT · KEEP ACCESS TO ITS TBA CLAIMS</small></div><span class="status-neutral">ERC-721</span></div>
+              <label class="select-field"><span>TOKEN ID</span><input id="stakeNftId" inputmode="numeric" placeholder="Enter MarsBroker token ID"/></label>
+              <label class="select-field"><span>LOCK COMMITMENT</span><select id="stakeNftTier"><option value="0">1 WEEK · 1× LOYALTY</option><option value="1">1 MONTH · 4× LOYALTY</option><option value="2">1 YEAR · 20× LOYALTY</option></select></label>
+              <div class="stake-actions"><button class="ghost compact" id="approveNftStake">01 · APPROVE NFT</button><button class="primary compact" id="stakeNft">02 · STAKE NFT</button><button class="ghost compact" id="unstakeNft">UNSTAKE</button></div>
+              <div class="risk-note"><b>PRINCIPAL PROTECTION</b><p>The exact MarsBroker remains in the staking contract until its selected unlock time. Stocks already inside its ERC-6551 account remain claimable by the recorded staker</p></div>
+            </section>
+
+            <section class="operation-card stake-console">
+              <div class="card-heading"><div><b>STAKE ERC-20 TOKENS</b><small>SUPPORTED TOKENS ONLY · NO APY</small></div><span class="status-neutral">LOYALTY</span></div>
+              <label class="select-field"><span>TOKEN CONTRACT</span><input id="stakeTokenAddress" placeholder="0x…" autocomplete="off"/></label>
+              <div class="vault-form-row"><label><span>AMOUNT</span><div class="inline-input"><input id="stakeTokenAmount" inputmode="decimal" placeholder="0.00"/></div></label><label><span>LOCK COMMITMENT</span><select id="stakeTokenTier"><option value="0">1 WEEK · 1×</option><option value="1">1 MONTH · 4×</option><option value="2">1 YEAR · 20×</option></select></label></div>
+              <div class="stake-actions"><button class="ghost compact" id="approveTokenStake">01 · APPROVE TOKEN</button><button class="primary compact" id="stakeToken">02 · STAKE TOKEN</button></div>
+              <div class="unstake-row"><label><span>STAKE POSITION ID</span><input id="unstakeTokenId" inputmode="numeric" placeholder="Position ID"/></label><button class="ghost compact" id="unstakeToken">UNSTAKE POSITION</button></div>
+            </section>
+
+            <aside class="staking-loyalty-board">
+              <span>ON-CHAIN COMMITMENT</span><h3>Lock longer<br/>signal stronger</h3>
+              <div class="staking-tier"><b>01</b><span><strong>1 WEEK</strong><small>7 loyalty points per NFT</small></span><em>1×</em></div>
+              <div class="staking-tier"><b>02</b><span><strong>1 MONTH</strong><small>120 loyalty points per NFT</small></span><em>4×</em></div>
+              <div class="staking-tier"><b>03</b><span><strong>1 YEAR</strong><small>7,300 loyalty points per NFT</small></span><em>20×</em></div>
+              <p>Points record commitment and future access eligibility. They do not represent yield, APY or a transferable token</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="module" id="module-options" data-module-panel="options">
+        <div class="module-header"><div><span class="overline">COVERED NFT POSITIONS</span><h1>Options Desk</h1><p>Prepare covered calls around MarsBroker floor prices and expiries</p></div></div>
+        <div class="options-layout"><div class="operation-card"><div class="card-heading"><div><b>WRITE COVERED CALL</b><small>POSITION BUILDER</small></div><span class="status-neutral">NOT DEPLOYED</span></div><label class="select-field"><span>UNDERLYING NFT</span><select disabled><option>Select MarsBroker</option></select></label><div class="two-fields"><label><span>STRIKE PRICE</span><div class="inline-input"><input placeholder="0.00" disabled/><b>BNB</b></div></label><label><span>EXPIRY</span><input type="date" disabled/></label></div><label class="amount-field"><span>PREMIUM</span><div><input placeholder="0.00" disabled/><b>BNB</b></div></label><div class="risk-note"><b>POSITION DISCLOSURE</b><p>Options remain disabled until audited settlement contracts are deployed.</p></div><button class="wide-action" disabled>OPTIONS CONTRACT NOT DEPLOYED</button></div><div class="options-board"><div class="panel-title"><div><b>OPEN MARKET</b><small>INDEXER FEED</small></div><span>0 POSITIONS</span></div><div class="empty-options"><span>⌁</span><h3>No positions indexed</h3><p>Live strikes, premiums and expiries will appear here after deployment</p></div></div></div>
+      </section>
+
+      <section class="module" id="module-referrals" data-module-panel="referrals">
+        <div class="module-header"><div><span class="overline">ORBITAL PARTNER ROUTES</span><h1>Referrals</h1><p>Generate your route and track protocol referral allocations</p></div></div>
+        <div class="referral-hero"><div><span>YOUR REFERRAL ROUTE</span><h2>Bring more brokers<br/>into orbit</h2><p>Your connected address becomes the source of the referral route when the protocol module is enabled</p><div class="referral-link"><input id="referralInput" value="Connect wallet to generate route" readonly/><button id="copyReferral">COPY</button></div></div><div class="referral-orbit"><b>YOU</b><i></i><span class="ref-node n1">01</span><span class="ref-node n2">02</span><span class="ref-node n3">03</span></div></div><div class="ref-stats"><div><small>TOTAL REFERRALS</small><b>—</b></div><div><small>ROUTED VOLUME</small><b>—</b></div><div><small>MARSCOIN EARNED</small><b>—</b></div></div>
+      </section>
+
+      <section class="module" id="module-docs" data-module-panel="docs">
+        <div class="module-header"><div><span class="overline">PROTOCOL REFERENCE</span><h1>Docs</h1><p>Architecture, fee routing, token-bound benefits and ownership rules</p></div></div>
+        <div class="docs-layout">
+          <aside class="docs-nav" aria-label="Documentation chapters">
+            <strong>PROTOCOL DOCS</strong>
+            <button class="active" data-doc-target="overview">01 · OVERVIEW</button>
+            <button data-doc-target="wallets">02 · ERC-6551 WALLETS</button>
+            <button data-doc-target="market">03 · NFT MARKET</button>
+            <button data-doc-target="assets">04 · STOCKS + MARSCOIN</button>
+            <button data-doc-target="claims">05 · CLAIM CENTER</button>
+            <button data-doc-target="transfers">06 · OWNERSHIP TRANSFERS</button>
+            <button data-doc-target="security">07 · SECURITY MODEL</button>
+            <button data-doc-target="status">08 · PROTOCOL ARCHITECTURE</button>
+          </aside>
+          <article class="docs-content">
+            <section class="doc-section active" data-doc-section="overview">
+              <span class="doc-tag">01 / PROTOCOL OVERVIEW</span>
+              <h2>What MarsBrokers does</h2>
+              <p>MarsBrokers launches its protocol token through Flap and routes a defined share of trading fees into tokenized-stock purchases. Every MarsBroker NFT is paired with an ERC-6551 account that receives the stock assigned to that broker identity</p>
+              <p>The current NFT owner controls the broker account and can claim accumulated stock assets to a personal wallet or sell the NFT with unclaimed TBA holdings and future fee benefits included</p>
+              <div class="doc-flow"><div><span>01</span><b>FLAP FEES</b><small>Protocol trading creates fee flow</small></div><i>→</i><div><span>02</span><b>BUY STOCK</b><small>Router purchases the assigned asset</small></div><i>→</i><div><span>03</span><b>CREDIT TBA</b><small>Stock enters the broker wallet</small></div><i>→</i><div><span>04</span><b>CLAIM OR SELL</b><small>Owner chooses how to realize value</small></div></div>
+              <h3>Core protocol principles</h3>
+              <ul class="doc-list"><li><b>Fees create broker benefits</b> The fee router converts the configured protocol share into tokenized stocks</li><li><b>Every broker keeps one stock identity</b> The NFT ID determines which stock receives its allocation</li><li><b>Benefits live with the token-bound account</b> Purchased assets are routed to the broker's ERC-6551 wallet</li><li><b>Ownership controls the outcome</b> The owner claims accumulated assets or sells the broker with unclaimed benefits included</li></ul>
+              <div class="doc-callout"><b>OWNER OPTIONS</b><span>Keep the NFT and claim accumulated stock assets, use the broker and its TBA as a protocol position, or sell the NFT together with the unclaimed benefits held by its account</span></div>
+            </section>
+
+            <section class="doc-section" data-doc-section="wallets">
+              <span class="doc-tag">02 / TOKEN-BOUND ACCOUNTS</span>
+              <h2>ERC-6551 broker wallets</h2>
+              <p>ERC-6551 gives an NFT a deterministic smart-account address without changing the NFT contract itself. A registry creates or resolves an account using the implementation contract, chain ID, NFT contract and token ID. The resulting token-bound account is controlled through ownership of the NFT</p>
+              <div class="doc-code"><span>ACCOUNT INPUT</span><code>implementation + chainId + nftContract + tokenId + salt</code></div>
+              <h3>What the broker wallet can hold</h3>
+              <div class="doc-grid"><div><b>TOKENIZED STOCKS</b><p>The fixed stock purchased from the protocol fee allocation</p></div><div><b>MARSCOIN</b><p>The protocol currency routed through the broker reward rail</p></div><div><b>NATIVE ASSET</b><p>BNB used for supported account execution and gas routing</p></div><div><b>FEE RECEIPTS</b><p>On-chain records linking fee rounds, purchases and broker allocations</p></div></div>
+              <h3>Control versus custody</h3>
+              <p>ERC-6551 does not automatically distribute rewards and does not guarantee that assets remain inside the wallet. Those rules must be enforced by the MarsBrokers claim, escrow or vault contracts. The account implementation must also define how calls are authorized and whether execution is restricted while the NFT is escrowed</p>
+              <div class="doc-callout warning"><b>IMPORTANT</b><span>A buyer must inspect the broker's current TBA balances and claim state. Owning an NFT controls its account; ERC-6551 alone does not promise a particular balance</span></div>
+            </section>
+
+            <section class="doc-section" data-doc-section="market">
+              <span class="doc-tag">03 / NFT MARKET</span>
+              <h2>Trading a broker and its benefits</h2>
+              <p>The marketplace lists MarsBroker NFTs, not detached wallet balances. When settlement transfers the NFT, ERC-6551 ownership resolution changes to the buyer. Assets already held by the token-bound account remain at that account address, while control passes to the new NFT owner</p>
+              <div class="doc-steps"><div><span>1</span><p><b>Seller approves the market</b> Approval must be limited to the verified MarsBrokers collection and marketplace contract</p></div><div><span>2</span><p><b>Listing is indexed</b> Price, seller, token ID, expiry and listing nonce are checked against on-chain state</p></div><div><span>3</span><p><b>Buyer reviews the dossier</b> The UI displays the assigned stock, Marscoin rail, TBA address, current balances and already-claimed periods</p></div><div><span>4</span><p><b>Settlement transfers the NFT</b> The market sends payment and transfers the NFT atomically. TBA control follows ownership</p></div><div><span>5</span><p><b>Indexer refreshes ownership</b> Market and Claim Center update only after transaction confirmation</p></div></div>
+              <h3>Required buyer protections</h3>
+              <ul class="doc-list"><li>Listings must include a nonce and expire or invalidate after transfer</li><li>The UI must re-read owner, approval and listing state before signing</li><li>If advertised TBA balances are part of the sale, settlement needs escrow or snapshot rules to stop the seller moving them before purchase</li><li>Future fee benefits are calculated by the distributor contract rather than inferred from interface copy</li></ul>
+            </section>
+
+            <section class="doc-section" data-doc-section="assets">
+              <span class="doc-tag">04 / ASSET ALLOCATION</span>
+              <h2>Predetermined stocks and Marscoin</h2>
+              <p>Every character identity keeps the same stock assignment across all visual variants. The fee router uses the broker ID to determine which tokenized stock to purchase, while Marscoin remains the common protocol rail</p>
+              <div class="stock-allocation-table"><div class="head"><b>BROKER</b><b>PRESET STOCK</b><b>SECOND RAIL</b></div><div><span>001</span><b>$AAPL · Apple</b><em>MARSCOIN</em></div><div><span>002</span><b>$AMZN · Amazon</b><em>MARSCOIN</em></div><div><span>003</span><b>$NVDA · NVIDIA</b><em>MARSCOIN</em></div><div><span>004</span><b>$MSFT · Microsoft</b><em>MARSCOIN</em></div><div><span>005</span><b>$COST · Costco</b><em>MARSCOIN</em></div><div><span>006</span><b>$PLTR · Palantir</b><em>MARSCOIN</em></div><div><span>007</span><b>$AMD · AMD</b><em>MARSCOIN</em></div><div><span>008</span><b>$TSLA · Tesla</b><em>MARSCOIN</em></div><div><span>009</span><b>$GME · GameStop</b><em>MARSCOIN</em></div><div><span>010</span><b>$USAR · USA Rare Earth</b><em>MARSCOIN</em></div></div>
+              <h3>Fee conversion and allocation</h3>
+              <p>The Flap token produces protocol fees in the configured settlement asset. The Fee Router calculates the distributable share, buys approved tokenized stocks and allocates the purchased amounts across eligible broker TBAs according to the on-chain distribution rule</p>
+              <p>The asset registry maps each display symbol to its chain ID, token contract and decimals so the router always purchases by verified address rather than ticker text</p>
+            </section>
+
+            <section class="doc-section" data-doc-section="claims">
+              <span class="doc-tag">05 / DISTRIBUTION</span>
+              <h2>How Claim Center works</h2>
+              <p>Claim Center discovers the MarsBrokers owned by the connected wallet, resolves each ERC-6551 account and reads the fee-funded stock balances accumulated for every broker</p>
+              <div class="doc-steps"><div><span>1</span><p><b>Connect wallet</b> The app resolves the wallet and its owned MarsBrokers</p></div><div><span>2</span><p><b>Select a broker</b> The broker ID identifies its ERC-6551 account and predetermined stock</p></div><div><span>3</span><p><b>Read fee benefits</b> Claim Center loads stock purchases credited by the Fee Router</p></div><div><span>4</span><p><b>Choose the outcome</b> Keep the assets in the TBA, claim them to the owner wallet or sell the NFT with the benefits included</p></div><div><span>5</span><p><b>Review and sign</b> The owner reviews asset, amount, source TBA, destination and network</p></div><div><span>6</span><p><b>Confirm ownership state</b> Balances and NFT ownership refresh from the confirmed transaction</p></div></div>
+              <h3>Double-claim prevention</h3>
+              <p>Stocks already deposited in the TBA can only leave through an owner-authorized account execution. Every unsettled fee round records consumed allocations by broker ID and round identifier so ownership changes cannot duplicate a distribution</p>
+            </section>
+
+            <section class="doc-section" data-doc-section="transfers">
+              <span class="doc-tag">06 / OWNERSHIP</span>
+              <h2>What transfers with the NFT</h2>
+              <div class="transfer-matrix"><div><b>ITEM</b><b>ON NFT SALE</b><b>WHY</b></div><div><span>Control of the TBA</span><em>TRANSFERS</em><p>ERC-6551 resolves the current NFT owner as account controller</p></div><div><span>Unclaimed stock holdings</span><em>INCLUDED</em><p>Assets remain at the broker account address when NFT ownership changes</p></div><div><span>Future fee allocations</span><em>FOLLOW NFT</em><p>The current owner controls benefits credited after the transfer</p></div><div><span>Already claimed assets</span><em>NOT INCLUDED</em><p>Assets previously moved to the seller wallet no longer belong to the TBA</p></div><div><span>Seller's personal wallet assets</span><em>DO NOT TRANSFER</em><p>Only the NFT and its token-bound account relationship are sold</p></div></div>
+              <h3>Safe marketplace disclosure</h3>
+              <p>Every listing dossier must distinguish between current TBA holdings, currently claimable assets and possible future distributions. These are different states. The production UI must timestamp indexed data and link to the TBA and relevant contracts on a block explorer</p>
+            </section>
+
+            <section class="doc-section" data-doc-section="security">
+              <span class="doc-tag">07 / SECURITY MODEL</span>
+              <h2>Security and transaction boundaries</h2>
+              <div class="doc-grid security-grid"><div><b>VERIFIED REGISTRY</b><p>All token, router and account addresses resolve from the protocol registry</p></div><div><b>EXPLICIT APPROVALS</b><p>The interface explains NFT approvals and token allowances before signatures</p></div><div><b>STATE REVALIDATION</b><p>Owner, fee round, claim and balance state are re-read immediately before execution</p></div><div><b>ROUTER LIMITS</b><p>Fee conversion uses approved stock assets, bounded slippage and allocation rules</p></div><div><b>CONTRACT AUTHORITY</b><p>Contracts remain authoritative for fee accounting, purchases, TBA credits and claims</p></div><div><b>TBA EXECUTION SAFETY</b><p>The account implementation uses replay protection, owner checks and safe call restrictions</p></div></div>
+              <h3>Primary protocol risks</h3>
+              <ul class="doc-list"><li>Seller removes TBA assets after listing but before settlement</li><li>Stale ownership or claim data creates a misleading purchase dossier</li><li>Unrestricted ERC-6551 execution allows malicious calls or token approvals</li><li>Claim accounting resets or can be replayed after an NFT transfer</li><li>Fake stock symbols point to unverified token contracts</li><li>Compromised interface routing replaces trusted contracts</li></ul>
+              <div class="doc-callout warning"><b>SECURITY STANDARD</b><span>Fee Router, marketplace, account implementation, distributor, vault and options contracts use independent audits and continuous monitoring</span></div>
+            </section>
+
+            <section class="doc-section" data-doc-section="status">
+              <span class="doc-tag">08 / SYSTEM ARCHITECTURE</span>
+              <h2>How protocol components connect</h2>
+              <p>MarsBrokers separates token trading, fee conversion, NFT ownership and benefit custody into explicit components with clear on-chain responsibilities</p>
+              <div class="integration-status"><div><b>COMPONENT</b><b>ROLE</b><b>AUTHORITATIVE DATA</b></div><div><span>Flap token market</span><em class="ready">TRADE</em><p>Token volume, collected fees and settlement asset</p></div><div><span>Fee Router</span><em class="ready">CONVERT</em><p>Fee share, stock purchases, slippage and distribution rounds</p></div><div><span>Stock registry</span><em class="ready">VERIFY</em><p>Broker ID, stock token address, chain ID and decimals</p></div><div><span>ERC-6551 registry</span><em class="ready">RESOLVE</em><p>Broker NFT, token ID, account implementation and TBA address</p></div><div><span>Benefit distributor</span><em class="ready">CREDIT</em><p>Purchased stock amounts assigned to eligible broker accounts</p></div><div><span>Claim Center</span><em class="ready">CLAIM</em><p>Owner, TBA balances, transfer destination and receipts</p></div><div><span>NFT marketplace</span><em class="ready">TRANSFER</em><p>Listing, sale and transfer of TBA control with the broker NFT</p></div><div><span>Protocol indexer</span><em class="ready">INDEX</em><p>Ownership, fee rounds, purchases, TBA balances and claims</p></div><div><span>Vault and options</span><em class="ready">COMPOSE</em><p>NFT positions that include token-bound account value</p></div></div>
+              <div class="doc-callout"><b>VALUE PATH</b><span>Flap trading fees become verified tokenized stocks, stocks enter broker TBAs and NFT ownership controls whether those benefits are claimed or sold with the broker</span></div>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="nft-modal" id="nftModal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="nft-modal-image"><img id="modalImage" src="/martians/001_martian_bnb.webp" alt="Selected MarsBroker"/><span>BROKER DOSSIER</span></div><div class="nft-modal-content"><span id="modalSignal">MARSBROKER</span><h2 id="modalTitle">MARTIAN 001</h2><div class="modal-price"><small>PRICE</small><b id="modalPrice">— BNB</b></div><dl><div><dt>Broker ID</dt><dd id="modalId">—</dd></div><div><dt>Wallet protocol</dt><dd>ERC-6551</dd></div><div><dt>Predetermined stock</dt><dd id="modalStock">—</dd></div><div><dt>Stock claimable</dt><dd>—</dd></div><div><dt>Marscoin claimable</dt><dd>—</dd></div></dl><div class="modal-disclosure">The NFT controls its token-bound wallet. Flap fees buy its predetermined stock and route the asset to the broker TBA. A sale transfers wallet control and unclaimed benefits to the buyer</div><button class="wide-action" id="modalBuy" disabled>NOT LISTED</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

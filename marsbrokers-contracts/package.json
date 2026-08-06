@@ -1,0 +1,25 @@
+{
+  "name": "marsbrokers-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:nft": "hardhat test test/MarsBrokersNFT.test.js",
+    "test:staking": "hardhat test test/MarsBrokersStaking.test.js",
+    "test:market": "hardhat test test/MarsBrokersMarket.test.js",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network bscMainnet",
+    "export:abis": "node scripts/export-abis.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "@openzeppelin/contracts": "4.9.6",
+    "@tokenbound/contracts": "0.3.1-beta.1",
+    "chai": "^4.5.0",
+    "dotenv": "^16.6.1",
+    "erc6551": "^0.3.1",
+    "ethers": "^6.15.0",
+    "hardhat": "^2.26.3"
+  }
+}
