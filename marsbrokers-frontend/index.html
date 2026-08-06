@@ -8,20 +8,34 @@
   <title>MarsBrokers — Interplanetary Exchange</title>
   <link rel="icon" href="/marsbrokers-logo-64.png?v=2" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="/marsbrokers-logo-180.png?v=2" />
+  <script>
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-CN',
+        autoDisplay: false
+      }, 'google_translate_element');
+      window.dispatchEvent(new Event('marsbrokers:translator-ready'));
+    };
+  </script>
+  <script defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
-      <a class="brand" href="#" data-module-link="hub" aria-label="MarsBrokers hub">
+      <a class="brand notranslate" href="#" data-module-link="hub" aria-label="MarsBrokers hub" translate="no">
         <img class="brand-logo" src="/marsbrokers-logo-transparent.png?v=2" alt="" width="44" height="42" />
         <span>MARS<b>BROKERS</b></span>
       </a>
-      <div class="network-pill"><i></i><span>FLAP NETWORK</span><small>BNB CHAIN</small></div>
+      <div class="network-pill notranslate" translate="no"><i></i><span>FLAP NETWORK</span><small>BNB CHAIN</small></div>
       <div class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search broker, token or module" aria-label="Search" /></div>
-      <a class="x-link" href="https://x.com/Marsbrokerscoin" target="_blank" rel="noopener noreferrer" aria-label="MarsBrokers on X"><span>𝕏</span><b>X / TWITTER</b></a>
-      <button class="wallet-btn" id="walletButton"><i></i><span id="walletLabel">CONNECT WALLET</span></button>
+      <div class="top-actions notranslate" translate="no">
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="Translate website to Chinese" title="Translate website to Chinese"><span id="languageLabel">中文</span></button>
+        <a class="x-link" href="https://x.com/Marsbrokerscoin" target="_blank" rel="noopener noreferrer" aria-label="MarsBrokers on X" title="MarsBrokers on X"><span>𝕏</span></a>
+        <button class="wallet-btn" id="walletButton" aria-label="Connect wallet"><i></i><span id="walletLabel">CONNECT WALLET</span></button>
+      </div>
     </header>
 
     <aside class="sidebar" id="sidebar">
@@ -351,6 +365,7 @@
   </div>
 
   <dialog class="nft-modal" id="nftModal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="nft-modal-image"><img id="modalImage" src="/martians/001_martian_bnb.webp" alt="Selected MarsBroker"/><span>BROKER DOSSIER</span></div><div class="nft-modal-content"><span id="modalSignal">MARSBROKER</span><h2 id="modalTitle">MARTIAN 001</h2><div class="modal-price"><small>PRICE</small><b id="modalPrice">— BNB</b></div><dl><div><dt>Broker ID</dt><dd id="modalId">—</dd></div><div><dt>Wallet protocol</dt><dd>ERC-6551</dd></div><div><dt>Predetermined stock</dt><dd id="modalStock">—</dd></div><div><dt>Stock claimable</dt><dd>—</dd></div><div><dt>Marscoin claimable</dt><dd>—</dd></div></dl><div class="modal-disclosure">The NFT controls its token-bound wallet. Flap fees buy its predetermined stock and route the asset to the broker TBA. A sale transfers wallet control and unclaimed benefits to the buyer</div><button class="wide-action" id="modalBuy" disabled>NOT LISTED</button></div></dialog>
+  <div id="google_translate_element" class="translate-engine" aria-hidden="true"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

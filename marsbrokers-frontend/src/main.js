@@ -5,6 +5,8 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const toast = $('#toast');
 const sidebar = $('#sidebar');
+const languageToggle = $('#languageToggle');
+const languageLabel = $('#languageLabel');
 let toastTimer;
 let brokers = [];
 let currentModule = 'hub';
@@ -48,6 +50,98 @@ function showToast(message) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
 }
+
+function googleTranslateCookieActive() {
+  return document.cookie.split(';').some((cookie) => cookie.trim() === 'googtrans=/en/zh-CN');
+}
+
+function expireGoogleTranslateCookie() {
+  const expired = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT;SameSite=Lax';
+  document.cookie = expired;
+  if (location.hostname && location.hostname !== 'localhost') {
+    document.cookie = `${expired};domain=${location.hostname}`;
+  }
+}
+
+function syncLanguageControl() {
+  const chinese = googleTranslateCookieActive() || localStorage.getItem('marsbrokers-language') === 'zh-CN';
+  languageLabel.textContent = chinese ? 'EN' : '中文';
+  languageToggle.classList.toggle('active', chinese);
+  languageToggle.setAttribute('aria-label', chinese ? '切换网站至英文' : 'Translate website to Chinese');
+  languageToggle.title = chinese ? '切换网站至英文' : 'Translate website to Chinese';
+  document.documentElement.lang = chinese ? 'zh-CN' : 'en';
+  if (!walletAddress) {
+    $('#walletLabel').textContent = chinese ? '连接钱包' : 'CONNECT WALLET';
+    $('#walletButton').setAttribute('aria-label', chinese ? '连接钱包' : 'Connect wallet');
+  }
+}
+
+const chineseTerminology = new Map([
+  ['薄荷味', '铸造'],
+  ['铸币', '铸造'],
+  ['MINT BROKER', '铸造经纪人'],
+  ['透明滤镜', '清除筛选'],
+  ['转诊', '推荐'],
+  ['桩', '质押'],
+  ['储物柜', '锁仓'],
+  ['待定', 'TBA'],
+  ['火星币', 'MARSCOIN'],
+  ['马尔斯科因', 'MARSCOIN'],
+  ['玛氏', 'MARS'],
+  ['附属NFT', '抵押 NFT'],
+  ['地位', '状态'],
+  ['敏', '最低'],
+  ['最大限度', '最高']
+]);
+
+function correctChineseTerminology(root = document.body) {
+  if (!(googleTranslateCookieActive() || localStorage.getItem('marsbrokers-language') === 'zh-CN') || !root) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    let corrected = node.nodeValue;
+    chineseTerminology.forEach((replacement, source) => { corrected = corrected.replaceAll(source, replacement); });
+    if (corrected !== node.nodeValue) node.nodeValue = corrected;
+  });
+  const elements = root.nodeType === Node.ELEMENT_NODE ? [root, ...root.querySelectorAll('*')] : [];
+  elements.forEach((element) => {
+    ['placeholder', 'aria-label', 'title'].forEach((attribute) => {
+      if (!element.hasAttribute(attribute)) return;
+      let corrected = element.getAttribute(attribute);
+      chineseTerminology.forEach((replacement, source) => { corrected = corrected.replaceAll(source, replacement); });
+      element.setAttribute(attribute, corrected);
+    });
+  });
+}
+
+function watchChineseTranslation() {
+  if (!(googleTranslateCookieActive() || localStorage.getItem('marsbrokers-language') === 'zh-CN')) return;
+  correctChineseTerminology();
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'characterData') correctChineseTerminology(mutation.target.parentElement);
+      mutation.addedNodes.forEach((node) => correctChineseTerminology(node.nodeType === Node.TEXT_NODE ? node.parentElement : node));
+    });
+  });
+  observer.observe(document.body, { childList: true, characterData: true, subtree: true });
+  [500, 1200, 2400, 4000].forEach((delay) => setTimeout(() => correctChineseTerminology(), delay));
+}
+
+languageToggle.addEventListener('click', () => {
+  const chinese = googleTranslateCookieActive() || localStorage.getItem('marsbrokers-language') === 'zh-CN';
+  if (chinese) {
+    localStorage.removeItem('marsbrokers-language');
+    expireGoogleTranslateCookie();
+  } else {
+    localStorage.setItem('marsbrokers-language', 'zh-CN');
+    document.cookie = 'googtrans=/en/zh-CN;path=/;max-age=31536000;SameSite=Lax';
+  }
+  location.reload();
+});
+
+syncLanguageControl();
+watchChineseTranslation();
 
 async function refreshOnchainMarket() {
   if (!contractSession) return;
@@ -101,6 +195,7 @@ async function connectWallet() {
     contractSession = await createWriteSession();
     walletAddress = contractSession.account;
     $('#walletLabel').textContent = shortAddress(walletAddress);
+    $('#walletButton').setAttribute('aria-label', `Connected wallet ${shortAddress(walletAddress)}`);
     $('#mintWalletState').textContent = shortAddress(walletAddress);
     $('#mintConnect').textContent = 'WALLET CONNECTED';
     $('#mintConnect').disabled = true;
@@ -126,7 +221,7 @@ function bindProviderListeners() {
   window.ethereum.on('accountsChanged', () => {
     contractSession = null;
     walletAddress = null;
-    $('#walletLabel').textContent = 'CONNECT WALLET';
+    syncLanguageControl();
     $('#mintWalletState').textContent = 'NOT CONNECTED';
     $('#mintConnect').textContent = 'CONNECT WALLET';
     $('#mintConnect').disabled = false;
@@ -135,7 +230,7 @@ function bindProviderListeners() {
   window.ethereum.on('chainChanged', () => {
     contractSession = null;
     walletAddress = null;
-    $('#walletLabel').textContent = 'CONNECT WALLET';
+    syncLanguageControl();
     $('#mintWalletState').textContent = 'NOT CONNECTED';
     $('#mintConnect').textContent = 'CONNECT WALLET';
     $('#mintConnect').disabled = false;
