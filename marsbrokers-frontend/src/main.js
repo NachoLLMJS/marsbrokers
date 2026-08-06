@@ -1,5 +1,5 @@
 import './style.css';
-import { actions, createWriteSession, deployment, deploymentConfigured, loadRecentMarketEntries } from './contracts/client.js';
+import { actions, createWriteSession, deployment, deploymentConfigured, loadPublicMintState, loadRecentMarketEntries } from './contracts/client.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -38,6 +38,9 @@ setContractActionsEnabled(false);
 if (deployment.marscoin) {
   $('#claimStockToken').value = deployment.marscoin;
 }
+const referralParam = new URLSearchParams(location.search).get('ref');
+const validReferral = /^0x[0-9a-fA-F]{40}$/.test(referralParam || '') ? referralParam : null;
+$('#mintReferrer').value = validReferral ? validReferral : 'No referral in this URL';
 
 function showToast(message) {
   toast.textContent = message;
@@ -48,7 +51,12 @@ function showToast(message) {
 
 async function refreshOnchainMarket() {
   if (!contractSession) return;
-  liveMarketEntries = await loadRecentMarketEntries(contractSession);
+  const [entries, mintState] = await Promise.all([
+    loadRecentMarketEntries(contractSession),
+    actions.readMintState(contractSession)
+  ]);
+  liveMarketEntries = entries;
+  $('#mintSupply').textContent = mintState.totalSupply.toString();
   renderMarket();
 }
 
@@ -60,7 +68,7 @@ function showModule(name) {
   $$('.nav-item').forEach((button) => button.classList.toggle('active', button.dataset.module === name));
   sidebar.classList.remove('open');
   window.scrollTo({ top: 0, behavior: 'instant' });
-  const moduleTitles = { market: 'NFT Market', swap: 'Swap', rewards: 'Claim Center', box: 'Broker Box', vault: 'Vault', options: 'Options Desk', referrals: 'Referrals', docs: 'Docs' };
+  const moduleTitles = { mint: 'Mint Broker NFT', market: 'NFT Market', swap: 'Swap', rewards: 'Claim Center', box: 'Broker Box', vault: 'Vault', options: 'Options Desk', referrals: 'Referrals', docs: 'Docs' };
   document.title = name === 'hub' ? 'MarsBrokers — Interplanetary Exchange' : `${moduleTitles[name] || name} — MarsBrokers`;
   history.replaceState(null, '', name === 'hub' ? location.pathname : `#${name}`);
 }
@@ -93,6 +101,11 @@ async function connectWallet() {
     contractSession = await createWriteSession();
     walletAddress = contractSession.account;
     $('#walletLabel').textContent = shortAddress(walletAddress);
+    $('#mintWalletState').textContent = shortAddress(walletAddress);
+    $('#mintConnect').textContent = 'WALLET CONNECTED';
+    $('#mintConnect').disabled = true;
+    const mintMessage = $('#mintResult p');
+    if (mintMessage) mintMessage.textContent = 'Wallet verified. Review the price and confirm mint when ready.';
     $('#referralInput').value = `${location.origin}/?ref=${walletAddress}`;
     if (!$('#brokerRouteRecipient').value) $('#brokerRouteRecipient').value = walletAddress;
     bindProviderListeners();
@@ -114,10 +127,18 @@ function bindProviderListeners() {
     contractSession = null;
     walletAddress = null;
     $('#walletLabel').textContent = 'CONNECT WALLET';
+    $('#mintWalletState').textContent = 'NOT CONNECTED';
+    $('#mintConnect').textContent = 'CONNECT WALLET';
+    $('#mintConnect').disabled = false;
     setContractActionsEnabled(false);
   });
   window.ethereum.on('chainChanged', () => {
     contractSession = null;
+    walletAddress = null;
+    $('#walletLabel').textContent = 'CONNECT WALLET';
+    $('#mintWalletState').textContent = 'NOT CONNECTED';
+    $('#mintConnect').textContent = 'CONNECT WALLET';
+    $('#mintConnect').disabled = false;
     setContractActionsEnabled(false);
     showToast('Network changed · Reconnect and verify contracts');
   });
@@ -175,9 +196,10 @@ function renderMarket() {
   const query = $('#marketSearch').value.trim().toLowerCase();
   const signal = $('#marketSignal').value;
   const source = liveMarketEntries
-    ? liveMarketEntries.map((entry) => {
-        const identity = brokers[(entry.identity - 1) % Math.max(1, brokers.length)] || {};
-        return { ...identity, ...entry, id: `MARSBROKER #${String(entry.tokenId).padStart(4, '0')}` };
+    ? liveMarketEntries.flatMap((entry) => {
+        const identity = brokers.find((item) => item.identity === Number(entry.identity));
+        if (!identity) return [];
+        return [{ ...identity, ...entry, id: `MARSBROKER #${String(entry.tokenId).padStart(4, '0')}` }];
       })
     : brokers.map((item) => ({ ...item, listed: false, priceBnb: null }));
   const filtered = source.filter((item) => {
@@ -289,16 +311,45 @@ $('#listBroker').addEventListener('click', (event) => {
     await refreshOnchainMarket();
   });
 });
+$('#mintConnect').addEventListener('click', connectWallet);
+
+function renderMintResult(result) {
+  const box = $('#mintResult');
+  box.replaceChildren();
+  const label = document.createElement('span');
+  label.textContent = 'MINT CONFIRMED';
+  box.append(label);
+  for (const item of result.minted) {
+    const row = document.createElement('div');
+    const token = document.createElement('b');
+    token.textContent = `MARSBROKER #${item.tokenId}`;
+    const account = document.createElement('small');
+    account.textContent = `TBA ${shortAddress(item.account)}`;
+    row.append(token, account);
+    box.append(row);
+  }
+  const receipt = document.createElement('a');
+  receipt.href = `https://bscscan.com/tx/${result.receipt.hash}`;
+  receipt.target = '_blank';
+  receipt.rel = 'noopener noreferrer';
+  receipt.textContent = 'VIEW CONFIRMED TRANSACTION ↗';
+  box.append(receipt);
+}
+
 $('#mintBroker').addEventListener('click', (event) => {
-  const referrer = new URLSearchParams(location.search).get('ref') || undefined;
-  runContractAction(event.currentTarget, 'MINTING…', 'Mint confirmed on-chain', async () => {
-    await actions.mint(contractSession, referrer);
+  runContractAction(event.currentTarget, 'WAITING FOR RECEIPT…', 'Mint confirmed on-chain', async () => {
+    const result = await actions.mint(contractSession, validReferral || undefined);
+    $('#mintSupply').textContent = result.totalSupply.toString();
+    renderMintResult(result);
     await refreshOnchainMarket();
   });
 });
 $('#selectBroker').addEventListener('click', () => {
   if (!walletAddress) connectWallet();
-  else showToast('Wallet connected');
+  else {
+    $('#claimBrokerTokenId').focus();
+    showToast('Enter the MarsBroker token ID that holds the stock or MARSCOIN');
+  }
 });
 $('#selectMarsClaim').addEventListener('click', () => {
   if (!deployment.marscoin) return showToast('MarsCoin address is not configured');
@@ -461,7 +512,7 @@ $$('[data-doc-target]').forEach((button) => button.addEventListener('click', () 
 $('#globalSearch').addEventListener('keydown', (event) => {
   if (event.key !== 'Enter') return;
   const query = event.currentTarget.value.trim().toLowerCase();
-  const modules = ['hub','market','swap','rewards','box','vault','options','referrals','docs'];
+  const modules = ['hub','mint','market','swap','rewards','box','vault','options','referrals','docs'];
   const match = modules.find((name) => name.includes(query) || (query === 'nft' && name === 'market') || (query === 'broker' && name === 'market'));
   if (match) showModule(match);
   else showToast('No module matches that search');
@@ -469,11 +520,14 @@ $('#globalSearch').addEventListener('keydown', (event) => {
 
 window.addEventListener('hashchange', () => {
   const hashModule = location.hash.slice(1) || 'hub';
-  const validModules = ['hub','market','swap','rewards','box','vault','options','referrals','docs'];
+  const validModules = ['hub','mint','market','swap','rewards','box','vault','options','referrals','docs'];
   if (hashModule !== currentModule) showModule(validModules.includes(hashModule) ? hashModule : 'hub');
 });
 
 const initialModule = location.hash.slice(1);
-if (initialModule) showModule(['market','swap','rewards','box','vault','options','referrals','docs'].includes(initialModule) ? initialModule : 'hub');
+if (initialModule) showModule(['mint','market','swap','rewards','box','vault','options','referrals','docs'].includes(initialModule) ? initialModule : 'hub');
 
 loadCollection();
+loadPublicMintState()
+  .then(({ totalSupply }) => { $('#mintSupply').textContent = totalSupply.toString(); })
+  .catch((error) => console.error('Public mint supply read failed', error));

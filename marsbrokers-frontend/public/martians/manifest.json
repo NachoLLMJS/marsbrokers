@@ -1,5 +1,6 @@
 [
   {
+    "identity": 1,
     "id": "MB-001-BNB",
     "number": 1,
     "sector": "BNB",
@@ -16,6 +17,7 @@
     ]
   },
   {
+    "identity": 2,
     "id": "MB-001-TESLA",
     "number": 1,
     "sector": "TESLA",
@@ -32,6 +34,7 @@
     ]
   },
   {
+    "identity": 3,
     "id": "MB-002-BNB",
     "number": 2,
     "sector": "BNB",
@@ -48,6 +51,7 @@
     ]
   },
   {
+    "identity": 4,
     "id": "MB-002-NVIDIA",
     "number": 2,
     "sector": "NVIDIA",
@@ -64,6 +68,7 @@
     ]
   },
   {
+    "identity": 5,
     "id": "MB-003-BNB",
     "number": 3,
     "sector": "BNB",
@@ -80,6 +85,7 @@
     ]
   },
   {
+    "identity": 6,
     "id": "MB-003-SPACEX",
     "number": 3,
     "sector": "SPACEX",
@@ -96,6 +102,7 @@
     ]
   },
   {
+    "identity": 7,
     "id": "MB-004-BNB",
     "number": 4,
     "sector": "BNB",
@@ -112,6 +119,7 @@
     ]
   },
   {
+    "identity": 8,
     "id": "MB-004-TESLA",
     "number": 4,
     "sector": "TESLA",
@@ -128,38 +136,7 @@
     ]
   },
   {
-    "id": "MB-005-BNB",
-    "number": 5,
-    "sector": "BNB",
-    "name": "Martian 005",
-    "image": "/martians/005_martian_bnb.webp",
-    "stock": {
-      "symbol": "COST",
-      "name": "Costco",
-      "type": "Flap tokenized stock"
-    },
-    "rewards": [
-      "COST",
-      "MARSCOIN"
-    ]
-  },
-  {
-    "id": "MB-005-NVIDIA",
-    "number": 5,
-    "sector": "NVIDIA",
-    "name": "Martian 005",
-    "image": "/martians/005_martian_nvidia.webp",
-    "stock": {
-      "symbol": "COST",
-      "name": "Costco",
-      "type": "Flap tokenized stock"
-    },
-    "rewards": [
-      "COST",
-      "MARSCOIN"
-    ]
-  },
-  {
+    "identity": 11,
     "id": "MB-006-BNB",
     "number": 6,
     "sector": "BNB",
@@ -176,6 +153,7 @@
     ]
   },
   {
+    "identity": 12,
     "id": "MB-006-SPACEX",
     "number": 6,
     "sector": "SPACEX",
@@ -192,6 +170,7 @@
     ]
   },
   {
+    "identity": 13,
     "id": "MB-007-BNB",
     "number": 7,
     "sector": "BNB",
@@ -208,6 +187,7 @@
     ]
   },
   {
+    "identity": 14,
     "id": "MB-007-NVIDIA",
     "number": 7,
     "sector": "NVIDIA",
@@ -224,6 +204,7 @@
     ]
   },
   {
+    "identity": 15,
     "id": "MB-007-SPACEX",
     "number": 7,
     "sector": "SPACEX",
@@ -240,6 +221,7 @@
     ]
   },
   {
+    "identity": 16,
     "id": "MB-008-BNB",
     "number": 8,
     "sector": "BNB",
@@ -256,6 +238,7 @@
     ]
   },
   {
+    "identity": 17,
     "id": "MB-008-NVIDIA",
     "number": 8,
     "sector": "NVIDIA",
@@ -272,6 +255,7 @@
     ]
   },
   {
+    "identity": 18,
     "id": "MB-008-SPACEX",
     "number": 8,
     "sector": "SPACEX",
@@ -288,6 +272,7 @@
     ]
   },
   {
+    "identity": 19,
     "id": "MB-008-TESLA",
     "number": 8,
     "sector": "TESLA",
@@ -304,6 +289,7 @@
     ]
   },
   {
+    "identity": 20,
     "id": "MB-009-BNB",
     "number": 9,
     "sector": "BNB",
@@ -320,6 +306,7 @@
     ]
   },
   {
+    "identity": 21,
     "id": "MB-009-NVIDIA",
     "number": 9,
     "sector": "NVIDIA",
@@ -336,6 +323,7 @@
     ]
   },
   {
+    "identity": 22,
     "id": "MB-009-SPACEX",
     "number": 9,
     "sector": "SPACEX",
@@ -352,6 +340,7 @@
     ]
   },
   {
+    "identity": 23,
     "id": "MB-009-TESLA",
     "number": 9,
     "sector": "TESLA",
@@ -368,6 +357,7 @@
     ]
   },
   {
+    "identity": 24,
     "id": "MB-010-BNB",
     "number": 10,
     "sector": "BNB",
@@ -384,6 +374,7 @@
     ]
   },
   {
+    "identity": 25,
     "id": "MB-010-NVIDIA",
     "number": 10,
     "sector": "NVIDIA",
@@ -400,6 +391,7 @@
     ]
   },
   {
+    "identity": 26,
     "id": "MB-010-SPACEX",
     "number": 10,
     "sector": "SPACEX",
@@ -416,6 +408,7 @@
     ]
   },
   {
+    "identity": 27,
     "id": "MB-010-TESLA",
     "number": 10,
     "sector": "TESLA",

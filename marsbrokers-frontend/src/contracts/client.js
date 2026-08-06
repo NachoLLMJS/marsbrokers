@@ -4,6 +4,7 @@ import {
   formatEther,
   Interface,
   isAddress,
+  JsonRpcProvider,
   parseEther,
   parseUnits,
   solidityPacked,
@@ -145,6 +146,14 @@ export async function loadRecentMarketEntries(session, maxItems = 100) {
   }));
 }
 
+export async function loadPublicMintState() {
+  requireConfigured();
+  const rpcUrl = import.meta.env.VITE_BSC_RPC_URL || 'https://bsc-dataseed.binance.org/';
+  const provider = new JsonRpcProvider(rpcUrl, deployment.chainId, { staticNetwork: true });
+  const nft = new Contract(deployment.nft, nftAbi, provider);
+  return { totalSupply: await nft.totalSupply() };
+}
+
 async function write(session, address, abi, method, args = [], overrides = undefined) {
   const { signer } = await requireExpectedWalletState(session.provider, session.account);
   const contract = new Contract(address, abi, signer);
@@ -177,7 +186,36 @@ async function confirmedReceipt(tx) {
 }
 
 export const actions = {
-  mint: (session, referrer = ZeroAddress) => write(session, deployment.nft, nftAbi, 'mint', [referrer], { value: MINT_PRICE }),
+  readMintState: async (session) => {
+    await requireExpectedWalletState(session.provider, session.account);
+    const nft = new Contract(deployment.nft, nftAbi, session.provider);
+    return { totalSupply: await nft.totalSupply() };
+  },
+  mint: async (session, referrer = ZeroAddress) => {
+    const receipt = await write(session, deployment.nft, nftAbi, 'mint', [referrer || ZeroAddress], { value: MINT_PRICE });
+    const iface = new Interface(nftAbi);
+    const mintedTokenIds = [];
+    for (const log of receipt.logs) {
+      if (log.address.toLowerCase() !== deployment.nft.toLowerCase()) continue;
+      try {
+        const parsed = iface.parseLog(log);
+        if (parsed?.name === 'Transfer'
+          && parsed.args.from === ZeroAddress
+          && parsed.args.to.toLowerCase() === session.account.toLowerCase()) {
+          mintedTokenIds.push(parsed.args.tokenId);
+        }
+      } catch {
+        // Ignore unrelated logs emitted during ERC-6551 account creation.
+      }
+    }
+    if (!mintedTokenIds.length) throw new Error('Mint receipt confirmed but no NFT Transfer event was found');
+    const nft = new Contract(deployment.nft, nftAbi, session.provider);
+    const minted = await Promise.all(mintedTokenIds.map(async (tokenId) => ({
+      tokenId,
+      account: await nft.accountOf(tokenId)
+    })));
+    return { receipt, minted, totalSupply: await nft.totalSupply() };
+  },
   approveMarket: (session, approved = true) => write(session, deployment.nft, nftAbi, 'setApprovalForAll', [deployment.market, approved]),
   list: (session, tokenId, priceBnb) => write(session, deployment.market, marketAbi, 'list', [tokenId, parseEther(priceBnb)]),
   cancelListing: (session, tokenId) => write(session, deployment.market, marketAbi, 'cancel', [tokenId]),

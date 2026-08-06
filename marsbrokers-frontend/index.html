@@ -27,6 +27,7 @@
     <aside class="sidebar" id="sidebar">
       <nav aria-label="MarsBrokers modules">
         <button class="nav-item active" data-module="hub"><span>⌂</span><b>Command</b></button>
+        <button class="nav-item" data-module="mint"><span>✦</span><b>Mint Broker</b></button>
         <button class="nav-item" data-module="market"><span>◈</span><b>NFT Market</b></button>
         <button class="nav-item" data-module="swap"><span>⇄</span><b>Swap</b></button>
         <button class="nav-item" data-module="rewards"><span>✦</span><b>Claim Center</b></button>
@@ -49,7 +50,7 @@
             <h1>Your broker<br/>Your market<br/><em>operator</em></h1>
             <p>MarsBrokers launches a token through Flap, converts protocol fees into each broker's predetermined tokenized stock and routes the purchased assets to its ERC-6551 wallet</p>
             <div class="reward-rail"><span><small>FLAP FEE RAIL</small><b>FEES BUY STOCK</b></span><i>→</i><span><small>BROKER RAIL</small><b>STOCK TO TBA</b></span></div>
-            <div class="hero-actions"><button class="primary" data-module-link="market">TRADE BROKERS <span>↗</span></button><button class="ghost" data-module-link="rewards">OPEN CLAIM CENTER <span>✦</span></button></div>
+            <div class="hero-actions"><button class="primary" data-module-link="mint">MINT A BROKER <span>✦</span></button><button class="ghost" data-module-link="market">TRADE BROKERS <span>↗</span></button><button class="ghost" data-module-link="rewards">CLAIM ASSETS <span>✦</span></button></div>
           </div>
 
           <div class="broker-formation" aria-label="Featured MarsBrokers">
@@ -67,7 +68,7 @@
             <div class="console-actions"><button data-module-link="market">MARKET</button><button data-module-link="swap">SWAP</button><button data-module-link="vault">VAULT</button><button data-module-link="box">BOX</button></div>
           </aside>
 
-          <div class="stock-tape"><span>001 · $AAPL</span><span>002 · $AMZN</span><span>003 · $NVDA</span><span>004 · $MSFT</span><span>005 · $COST</span><span>006 · $PLTR</span><span>007 · $AMD</span><span>008 · $TSLA</span><span>009 · $GME</span><span>010 · $USAR</span></div>
+          <div class="stock-tape"><span>001 · $AAPL</span><span>002 · $AMZN</span><span>003 · $NVDA</span><span>004 · $MSFT</span><span>006 · $PLTR</span><span>007 · $AMD</span><span>008 · $TSLA</span><span>009 · $GME</span><span>010 · $USAR</span></div>
         </div>
 
         <div class="dashboard-grid">
@@ -90,8 +91,32 @@
         </div>
       </section>
 
+      <section class="module mint-module" id="module-mint" data-module-panel="mint">
+        <div class="module-header"><div><span class="overline">LIVE ON BNB CHAIN · ERC-721 + ERC-6551</span><h1>Mint Broker NFT</h1><p>Mint a unique MarsBroker and receive its deterministic token-bound wallet in the same confirmed transaction.</p></div><div class="route-badge"><i></i>PUBLIC MINT OPEN</div></div>
+        <div class="mint-layout">
+          <section class="mint-visual" aria-label="MarsBroker mint preview">
+            <div class="mint-scan"></div>
+            <img src="/martians/008_martian_spacex.webp" alt="MarsBroker NFT preview" />
+            <div class="mint-visual-copy"><span>27 IDENTITIES · UNLIMITED EDITIONS</span><h2>Issue your<br/>market operator</h2><p>The identity cycles on-chain. Every mint receives a new ERC-721 token ID and a separate ERC-6551 account.</p></div>
+            <div class="mint-orbit-label"><small>NEXT IDENTITY</small><b>REVEALED ON-CHAIN</b></div>
+          </section>
+          <section class="operation-card mint-console">
+            <div class="card-heading"><div><b>PUBLIC MINT</b><small>BNB CHAIN MAINNET · RECEIPT REQUIRED</small></div><span class="status-neutral">LIVE</span></div>
+            <div class="mint-price"><span>MINT PRICE</span><b>0.035 <small>BNB</small></b><em>+ network gas</em></div>
+            <label class="mint-referral"><span>REFERRER</span><div><input id="mintReferrer" readonly value="No referral in this URL"/><small>A valid holder referral may activate the contract's 2-for-1 route.</small></div></label>
+            <div class="mint-wallet-state"><span>CONNECTED WALLET</span><b id="mintWalletState">NOT CONNECTED</b></div>
+            <div class="mint-actions"><button class="ghost compact" id="mintConnect">CONNECT WALLET</button><button class="wide-action mint-submit" id="mintBroker" disabled>MINT BROKER · 0.035 BNB</button></div>
+            <div class="mint-delivery-grid"><div><i>01</i><span><b>ERC-721 NFT</b><small>Unique token ID</small></span></div><div><i>02</i><span><b>ERC-6551 TBA</b><small>Deterministic broker wallet</small></span></div></div>
+            <div class="mint-live-facts"><div><span>ON-CHAIN SUPPLY</span><b id="mintSupply">3</b></div><div><span>COLLECTION</span><b>OPEN</b></div><div><span>PAYMENT</span><b>BNB</b></div></div>
+            <p class="mint-disclosure">Your wallet submits one payable transaction. Success is shown only after the receipt confirms. MarsBrokers does not promise stock or MARSCOIN balances at mint; those assets become claimable only after they are deposited into the NFT's TBA.</p>
+            <div class="mint-result" id="mintResult" aria-live="polite"><span>MINT RESULT</span><p>Connect a wallet to mint on BNB Chain.</p></div>
+            <a class="mint-contract-link" href="https://bscscan.com/address/0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F" target="_blank" rel="noopener noreferrer">VIEW NFT CONTRACT ON BSCSCAN ↗</a>
+          </section>
+        </div>
+      </section>
+
       <section class="module" id="module-market" data-module-panel="market">
-        <div class="module-header"><div><span class="overline">NFT + TOKEN-BOUND BENEFITS</span><h1>NFT Market</h1><p>Trade each broker together with control of its ERC-6551 wallet and unclaimed fee-funded benefits</p></div><div class="header-actions"><button class="primary compact" id="mintBroker">MINT · 0.035 BNB</button><button class="ghost compact" id="myBrokers">MY BROKERS</button><button class="ghost compact" id="listBroker">LIST A BROKER +</button></div></div>
+        <div class="module-header"><div><span class="overline">NFT + TOKEN-BOUND BENEFITS</span><h1>NFT Market</h1><p>Trade each broker together with control of its ERC-6551 wallet and unclaimed fee-funded benefits</p></div><div class="header-actions"><button class="primary compact" data-module-link="mint">MINT · 0.035 BNB</button><button class="ghost compact" id="myBrokers">MY BROKERS</button><button class="ghost compact" id="listBroker">LIST A BROKER +</button></div></div>
         <div class="market-toolbar">
           <div class="market-tabs"><button class="active">EXPLORE</button><button>RECENT SALES</button><button>ACTIVITY</button></div>
           <div class="market-controls"><input id="marketSearch" placeholder="Search broker #" /><select id="marketSignal"><option value="ALL">All signals</option><option>BNB</option><option>TESLA</option><option>NVIDIA</option><option>SPACEX</option></select><select><option>Price: low to high</option><option>Recently listed</option></select></div>
@@ -117,13 +142,13 @@
       </section>
 
       <section class="module" id="module-rewards" data-module-panel="rewards">
-        <div class="module-header"><div><span class="overline">TREASURY-MANAGED BENEFIT DISTRIBUTION</span><h1>Claim Center</h1><p>Claim compatible tokens after they have been deposited on-chain in the selected broker's ERC-6551 wallet</p></div><span class="preview-chip">OWNER CONTROLLED</span></div>
+        <div class="module-header"><div><span class="overline">ERC-6551 ASSET WITHDRAWAL</span><h1>Claim Center</h1><p>Claim tokenized stocks and MARSCOIN to your connected wallet after those ERC-20 assets arrive in your NFT's token-bound account.</p></div><span class="preview-chip">OWNER / STAKER CONTROLLED</span></div>
         <div class="claim-center-grid">
           <div class="operation-card claim-broker-panel"><div class="card-heading"><div><b>SELECT CLAIMING BROKER</b><small>OWNERSHIP CONTROLS THE TOKEN-BOUND WALLET</small></div><span class="status-neutral">SELECT NFT</span></div><div class="broker-selector"><img src="/martians/008_martian_spacex.webp" alt="Selected MarsBroker"/><div><span>SELECTED BROKER</span><b>NO NFT SELECTED</b><small>On-chain deposits are held by this broker TBA</small></div><button id="selectBroker">CHOOSE</button></div><div class="ownership-flow"><span>TREASURY</span><i>→</i><span>MANAGED ACQUISITION</span><i>→</i><span>TBA DEPOSIT</span></div><p class="claim-transfer-note">The owner can claim deposited assets or sell the NFT with unclaimed TBA assets included.</p></div>
-          <div class="operation-card claim-rail stock-claim"><div class="claim-rail-head"><i>$</i><div><span>ERC-6551 STOCK CLAIM</span><b>ROUTE TOKEN</b></div><small>ON-CHAIN</small></div><div class="broker-route-fields"><label>BROKER TOKEN ID<input id="claimBrokerTokenId" inputmode="numeric" placeholder="4"></label><label>ERC-20 CONTRACT<input id="claimStockToken" placeholder="0x..."></label><label>AMOUNT<input id="claimStockAmount" inputmode="decimal" placeholder="1.0"></label><label>CONTROL MODE<select id="claimControlMode"><option value="owner">NFT IN WALLET</option><option value="staked">NFT IS STAKED</option></select></label></div><button class="wide-action" id="claimStockAction" disabled>CLAIM TO CONNECTED WALLET</button></div>
-          <div class="operation-card claim-rail mars-claim"><div class="claim-rail-head"><i>M</i><div><span>OFFICIAL TOKEN</span><b>MARSCOIN</b></div><small>ERC-20 CLAIM</small></div><div class="claim-amount"><span>TOKEN CONTRACT</span><b>0xfe18…7777</b><small>Distributed to broker TBAs by the project operator</small></div><button class="wide-action" id="selectMarsClaim" disabled>CLAIM MARSCOIN FROM TBA</button></div>
+          <div class="operation-card claim-rail stock-claim"><div class="claim-rail-head"><i>$</i><div><span>ERC-6551 ASSET CLAIM</span><b>STOCK OR MARSCOIN</b></div><small>ON-CHAIN</small></div><div class="broker-route-fields"><label>BROKER TOKEN ID<input id="claimBrokerTokenId" inputmode="numeric" placeholder="4"></label><label>STOCK / MARSCOIN CONTRACT<input id="claimStockToken" placeholder="0x..."></label><label>AMOUNT<input id="claimStockAmount" inputmode="decimal" placeholder="1.0"></label><label>CONTROL MODE<select id="claimControlMode"><option value="owner">NFT IN WALLET</option><option value="staked">NFT IS STAKED</option></select></label></div><button class="wide-action" id="claimStockAction" disabled>CLAIM TO CONNECTED WALLET</button></div>
+          <div class="operation-card claim-rail mars-claim"><div class="claim-rail-head"><i>M</i><div><span>OFFICIAL TOKEN</span><b>MARSCOIN</b></div><small>ERC-20 CLAIM</small></div><div class="claim-amount"><span>TOKEN CONTRACT</span><b>0xfe18…7777</b><small>Use this contract after MARSCOIN has been deposited into the selected broker TBA.</small></div><button class="wide-action" id="selectMarsClaim" disabled>USE MARSCOIN CONTRACT</button></div>
         </div>
-        <div class="distribution-panel"><div class="panel-title"><div><b>CLAIM HISTORY</b><small>TBA TOKEN EVENTS</small></div><span>ON-CHAIN HISTORY</span></div><div class="data-head"><span>BROKER</span><span>ASSET</span><span>AMOUNT</span><span>SOURCE TBA</span><span>TRANSACTION</span></div><div class="empty-table">Connect a wallet to load claim history</div></div>
+        <div class="distribution-panel"><div class="panel-title"><div><b>CLAIM RECEIPTS</b><small>TBA TOKEN TRANSFERS</small></div><span>ON-CHAIN HISTORY</span></div><div class="data-head"><span>BROKER</span><span>ASSET</span><span>AMOUNT</span><span>SOURCE TBA</span><span>TRANSACTION</span></div><div class="empty-table">Successful claims are confirmed by the wallet receipt and visible on BscScan.</div></div>
       </section>
 
       <section class="module" id="module-box" data-module-panel="box">
@@ -280,7 +305,7 @@
               <span class="doc-tag">04 / ASSET ALLOCATION</span>
               <h2>Predetermined stocks and Marscoin</h2>
               <p>Every character identity keeps the same stock assignment across all visual variants. The fee router uses the broker ID to determine which tokenized stock to purchase, while Marscoin remains the common protocol rail</p>
-              <div class="stock-allocation-table"><div class="head"><b>BROKER</b><b>PRESET STOCK</b><b>SECOND RAIL</b></div><div><span>001</span><b>$AAPL · Apple</b><em>MARSCOIN</em></div><div><span>002</span><b>$AMZN · Amazon</b><em>MARSCOIN</em></div><div><span>003</span><b>$NVDA · NVIDIA</b><em>MARSCOIN</em></div><div><span>004</span><b>$MSFT · Microsoft</b><em>MARSCOIN</em></div><div><span>005</span><b>$COST · Costco</b><em>MARSCOIN</em></div><div><span>006</span><b>$PLTR · Palantir</b><em>MARSCOIN</em></div><div><span>007</span><b>$AMD · AMD</b><em>MARSCOIN</em></div><div><span>008</span><b>$TSLA · Tesla</b><em>MARSCOIN</em></div><div><span>009</span><b>$GME · GameStop</b><em>MARSCOIN</em></div><div><span>010</span><b>$USAR · USA Rare Earth</b><em>MARSCOIN</em></div></div>
+              <div class="stock-allocation-table"><div class="head"><b>BROKER</b><b>PRESET STOCK</b><b>SECOND RAIL</b></div><div><span>001</span><b>$AAPL · Apple</b><em>MARSCOIN</em></div><div><span>002</span><b>$AMZN · Amazon</b><em>MARSCOIN</em></div><div><span>003</span><b>$NVDA · NVIDIA</b><em>MARSCOIN</em></div><div><span>004</span><b>$MSFT · Microsoft</b><em>MARSCOIN</em></div><div><span>006</span><b>$PLTR · Palantir</b><em>MARSCOIN</em></div><div><span>007</span><b>$AMD · AMD</b><em>MARSCOIN</em></div><div><span>008</span><b>$TSLA · Tesla</b><em>MARSCOIN</em></div><div><span>009</span><b>$GME · GameStop</b><em>MARSCOIN</em></div><div><span>010</span><b>$USAR · USA Rare Earth</b><em>MARSCOIN</em></div></div>
               <h3>Fee conversion and allocation</h3>
               <p>The Flap token produces protocol fees in the configured settlement asset. The Fee Router calculates the distributable share, buys approved tokenized stocks and allocates the purchased amounts across eligible broker TBAs according to the on-chain distribution rule</p>
               <p>The asset registry maps each display symbol to its chain ID, token contract and decimals so the router always purchases by verified address rather than ticker text</p>
