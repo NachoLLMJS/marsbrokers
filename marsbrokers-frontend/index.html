@@ -151,11 +151,11 @@
       </section>
 
       <section class="module" id="module-swap" data-module-panel="swap">
-        <div class="module-header swap-module-header"><div><span class="overline">SWAP DESK</span><h1>Swap tokens</h1><p id="swapModuleDescription">Exchange BNB and MARSCOIN through live PancakeSwap V3 liquidity</p></div><div class="route-badge"><i></i>BNB CHAIN</div></div>
+        <div class="module-header swap-module-header"><div><span class="overline">SWAP DESK</span><h1>Swap tokens</h1><p id="swapModuleDescription">Robinhood ETH routing will activate after contracts and liquidity are verified</p></div><div class="route-badge"><i></i>ROBINHOOD</div></div>
         <div class="swap-stage">
           <div class="normal-swap-card operation-card">
             <div class="normal-swap-head">
-              <div><b>SWAP</b><small id="swapModeStatus">LIVE PANCAKESWAP V3 ROUTE</small></div>
+              <div><b>SWAP</b><small id="swapModeStatus">ROBINHOOD ETH ROUTE NOT CONFIGURED</small></div>
               <div class="swap-head-tools">
                 <div class="swap-mode-tabs" role="tablist" aria-label="Swap asset type">
                   <button id="swapCryptoTab" class="active" type="button" role="tab" aria-selected="true" aria-controls="swapCryptoPanel">CRYPTO</button>
@@ -165,13 +165,13 @@
               </div>
             </div>
             <div class="swap-mode-panel" id="swapCryptoPanel" role="tabpanel" aria-labelledby="swapCryptoTab">
-            <select id="marsSwapDirection" class="swap-direction-select" aria-label="Swap direction"><option value="bnbToMars">BNB → MARSCOIN</option><option value="marsToBnb">MARSCOIN → BNB</option></select>
+            <select id="marsSwapDirection" class="swap-direction-select" aria-label="Swap direction"><option value="bnbToMars">ETH → MARSCOIN</option><option value="marsToBnb">MARSCOIN → ETH</option></select>
 
             <div class="swap-asset-box swap-pay-box">
               <div class="swap-box-label"><span>YOU PAY</span><small id="swapPayBalance">BALANCE —</small></div>
               <div class="swap-amount-line">
                 <input id="marsSwapAmount" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-label="Amount to pay" />
-                <div class="swap-token-pill"><i id="swapPayIcon" class="swap-token-icon bnb-token">B</i><div><b id="swapPaySymbol">BNB</b><small>BNB CHAIN</small></div></div>
+                <div class="swap-token-pill"><i id="swapPayIcon" class="swap-token-icon eth-token">E</i><div><b id="swapPaySymbol">ETH</b><small>ROBINHOOD</small></div></div>
               </div>
               <small class="swap-fiat-hint">Enter the amount you want to swap</small>
             </div>
@@ -182,21 +182,21 @@
               <div class="swap-box-label"><span>YOU RECEIVE</span><small>LIVE QUOTE</small></div>
               <div class="swap-amount-line">
                 <div class="swap-output" id="swapQuoteOutput">0.00</div>
-                <div class="swap-token-pill"><i id="swapReceiveIcon" class="swap-token-icon mars-token">M</i><div><b id="swapReceiveSymbol">MARSCOIN</b><small>BNB CHAIN</small></div></div>
+                <div class="swap-token-pill"><i id="swapReceiveIcon" class="swap-token-icon mars-token">M</i><div><b id="swapReceiveSymbol">MARSCOIN</b><small>ROBINHOOD</small></div></div>
               </div>
-              <small class="swap-fiat-hint" id="swapLiquidityStatus">Official PancakeSwap QuoterV2</small>
+              <small class="swap-fiat-hint" id="swapLiquidityStatus">Robinhood liquidity not configured</small>
             </div>
 
             <input id="marsSwapMinimum" type="hidden" />
             <div class="swap-details">
-              <div><span>ROUTE</span><b id="swapRouteLabel">BNB → WBNB → USDT → MARSCOIN</b></div>
+              <div><span>ROUTE</span><b id="swapRouteLabel">ETH → WETH → USDT → MARSCOIN</b></div>
               <div><span>MINIMUM RECEIVED</span><b id="swapMinimumDisplay">Quote required</b></div>
               <div><span>NETWORK FEE</span><b>Calculated in wallet</b></div>
             </div>
 
             <button class="swap-refresh-action" id="refreshSwapQuote" disabled>REFRESH LIVE QUOTE</button>
             <button class="swap-approval-action" id="approveClaimSwap" disabled hidden>APPROVE MARSCOIN</button>
-            <button class="swap-primary-action" id="executeClaimSwap">CONNECT WALLET</button>
+            <button class="swap-primary-action" id="executeClaimSwap" disabled>ETH ROUTE NOT CONFIGURED</button>
             <p class="swap-protection-note"><i></i> Protected by 0.5% slippage · Quote expires after 20 minutes</p>
             </div>
 
@@ -213,18 +213,18 @@
               <div class="swap-stock-arrow" aria-hidden="true">↓</div>
 
               <div class="swap-asset-box swap-receive-box">
-                <div class="swap-box-label"><span>YOU RECEIVE</span><small>BNB SETTLEMENT</small></div>
+                <div class="swap-box-label"><span>YOU RECEIVE</span><small>ETH SETTLEMENT</small></div>
                 <div class="swap-amount-line">
                   <div class="swap-output">0.00</div>
-                  <div class="swap-token-pill"><i class="swap-token-icon bnb-token">B</i><div><b>BNB</b><small>BNB CHAIN</small></div></div>
+                  <div class="swap-token-pill"><i class="swap-token-icon eth-token">E</i><div><b>ETH</b><small>ROBINHOOD</small></div></div>
                 </div>
                 <small class="swap-fiat-hint">Quote becomes available when the stock pool is configured</small>
               </div>
 
               <div class="swap-details">
-                <div><span>ROUTE</span><b id="stockSwapRoute">$TSLA → BNB</b></div>
+                <div><span>ROUTE</span><b id="stockSwapRoute">$TSLA → ETH</b></div>
                 <div><span>LIQUIDITY</span><b>Not configured</b></div>
-                <div><span>NETWORK</span><b>BNB Chain Mainnet</b></div>
+                <div><span>NETWORK</span><b>Robinhood</b></div>
               </div>
               <button class="swap-primary-action" id="executeStockSwap" disabled>STOCK ROUTE NOT CONFIGURED</button>
               <p class="swap-protection-note stock-route-note"><i></i> Activates only after token contracts and on-chain liquidity are verified</p>
@@ -249,7 +249,7 @@
       </section>
 
       <section class="module" id="module-vault" data-module-panel="vault">
-        <div class="module-header"><div><span class="overline">ERC-6551 COLLATERAL CONTROL</span><h1>Vault</h1><p>Use a MarsBroker as collateral or seal a verified liquidity position</p></div><span class="preview-chip">BNB SETTLEMENT</span></div>
+        <div class="module-header"><div><span class="overline">ERC-6551 COLLATERAL CONTROL</span><h1>Vault</h1><p>Use a MarsBroker as collateral or seal a verified liquidity position</p></div><span class="preview-chip">ETH SETTLEMENT</span></div>
 
         <div class="vault-modebar">
           <div class="vault-tabs" role="tablist" aria-label="Vault modes">
@@ -279,9 +279,9 @@
             <section class="vault-borrow-console operation-card">
               <div class="card-heading"><div><b>BUILD BORROW POSITION</b><small>REVIEW EVERY PARAMETER BEFORE APPROVAL</small></div><span class="status-neutral">BORROW</span></div>
               <label class="vault-broker-field"><span>01 · COLLATERAL NFT</span><div><b>NO BROKER SELECTED</b><button id="vaultSelectBroker">SELECT BROKER</button></div></label>
-              <div class="vault-form-row"><label><span>02 · LOAN ASSET</span><div class="vault-readonly"><i>⬡</i><b>BNB</b><small>Settlement asset</small></div></label><label><span>03 · BORROW AMOUNT</span><div class="inline-input"><input placeholder="0.00" inputmode="decimal"/><b>BNB</b></div></label></div>
+              <div class="vault-form-row"><label><span>02 · LOAN ASSET</span><div class="vault-readonly"><i>⬡</i><b>ETH</b><small>Settlement asset</small></div></label><label><span>03 · BORROW AMOUNT</span><div class="inline-input"><input placeholder="0.00" inputmode="decimal"/><b>ETH</b></div></label></div>
               <div class="vault-risk-meter"><div><span>POSITION UTILIZATION</span><b>—</b></div><i><em></em></i><small>Select a broker to load borrow limit, interest and liquidation threshold</small></div>
-              <div class="vault-summary"><div><span>AVAILABLE TO BORROW</span><b>— BNB</b></div><div><span>INTEREST RATE</span><b>—</b></div><div><span>LIQUIDATION PRICE</span><b>—</b></div></div>
+              <div class="vault-summary"><div><span>AVAILABLE TO BORROW</span><b>— ETH</b></div><div><span>INTEREST RATE</span><b>—</b></div><div><span>LIQUIDATION PRICE</span><b>—</b></div></div>
               <button class="wide-action" disabled>BORROW CONTRACT NOT DEPLOYED</button>
             </section>
           </div>

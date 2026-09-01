@@ -7,6 +7,7 @@ const toast = $('#toast');
 const sidebar = $('#sidebar');
 const languageToggle = $('#languageToggle');
 const languageLabel = $('#languageLabel');
+const ETH_SWAP_ENABLED = false;
 let toastTimer;
 let brokers = [];
 let currentModule = 'hub';
@@ -480,47 +481,54 @@ function setSwapMode(mode) {
   $('#swapCryptoPanel').hidden = stocks;
   $('#swapStocksPanel').hidden = !stocks;
   $('.normal-swap-card').classList.toggle('stock-mode', stocks);
-  $('#swapModeStatus').textContent = stocks ? 'STOCK TOKEN → BNB ROUTING' : 'LIVE PANCAKESWAP V3 ROUTE';
+  $('#swapModeStatus').textContent = stocks ? 'STOCK TOKEN → ETH ROUTING' : 'ROBINHOOD ETH ROUTE NOT CONFIGURED';
   $('#swapModuleDescription').textContent = stocks
-    ? 'Tokenized stock routes will settle into BNB after contracts and liquidity are verified'
-    : 'Exchange BNB and MARSCOIN through live PancakeSwap V3 liquidity';
+    ? 'Tokenized stock routes will settle into ETH after contracts and liquidity are verified'
+    : 'Robinhood ETH routing will activate after contracts and liquidity are verified';
 }
 
 $('#swapCryptoTab').addEventListener('click', () => setSwapMode('crypto'));
 $('#swapStocksTab').addEventListener('click', () => setSwapMode('stocks'));
 $('#stockSwapToken').addEventListener('change', (event) => {
   $('#stockSwapSymbol').textContent = event.currentTarget.value;
-  $('#stockSwapRoute').textContent = `${event.currentTarget.value} → BNB`;
+  $('#stockSwapRoute').textContent = `${event.currentTarget.value} → ETH`;
 });
 
 function syncMarsSwapPresentation({ resetQuote = false } = {}) {
   const direction = $('#marsSwapDirection').value;
   const bnbToMars = direction === 'bnbToMars';
-  const paySymbol = bnbToMars ? 'BNB' : 'MARSCOIN';
-  const receiveSymbol = bnbToMars ? 'MARSCOIN' : 'BNB';
+  const paySymbol = bnbToMars ? 'ETH' : 'MARSCOIN';
+  const receiveSymbol = bnbToMars ? 'MARSCOIN' : 'ETH';
   const amount = $('#marsSwapAmount').value.trim();
 
   $('#swapPaySymbol').textContent = paySymbol;
   $('#swapReceiveSymbol').textContent = receiveSymbol;
-  $('#swapPayIcon').textContent = bnbToMars ? 'B' : 'M';
-  $('#swapReceiveIcon').textContent = bnbToMars ? 'M' : 'B';
-  $('#swapPayIcon').className = `swap-token-icon ${bnbToMars ? 'bnb-token' : 'mars-token'}`;
-  $('#swapReceiveIcon').className = `swap-token-icon ${bnbToMars ? 'mars-token' : 'bnb-token'}`;
+  $('#swapPayIcon').textContent = bnbToMars ? 'E' : 'M';
+  $('#swapReceiveIcon').textContent = bnbToMars ? 'M' : 'E';
+  $('#swapPayIcon').className = `swap-token-icon ${bnbToMars ? 'eth-token' : 'mars-token'}`;
+  $('#swapReceiveIcon').className = `swap-token-icon ${bnbToMars ? 'mars-token' : 'eth-token'}`;
   $('#swapRouteLabel').textContent = bnbToMars
-    ? 'BNB → WBNB → USDT → MARSCOIN'
-    : 'MARSCOIN → USDT → WBNB → BNB';
+    ? 'ETH → WETH → USDT → MARSCOIN'
+    : 'MARSCOIN → USDT → WETH → ETH';
   $('#swapPayBalance').textContent = contractSession ? 'WALLET CONNECTED' : 'BALANCE —';
 
   if (resetQuote) {
     $('#swapQuoteOutput').textContent = '0.00';
     $('#marsSwapMinimum').value = '';
     $('#swapMinimumDisplay').textContent = 'Quote required';
-    $('#swapLiquidityStatus').textContent = 'Official PancakeSwap QuoterV2';
+    $('#swapLiquidityStatus').textContent = 'Robinhood liquidity not configured';
   }
 
   const refresh = $('#refreshSwapQuote');
   const approval = $('#approveClaimSwap');
   const primary = $('#executeClaimSwap');
+  if (!ETH_SWAP_ENABLED) {
+    refresh.disabled = true;
+    approval.hidden = true;
+    primary.disabled = true;
+    primary.textContent = 'ETH ROUTE NOT CONFIGURED';
+    return;
+  }
   refresh.disabled = !contractSession || !amount;
   approval.hidden = bnbToMars || !contractSession;
   approval.disabled = !contractSession || !amount || bnbToMars;
@@ -542,7 +550,7 @@ async function refreshMarsSwapQuote() {
   const direction = $('#marsSwapDirection').value;
   const amount = requiredValue('#marsSwapAmount', 'Swap amount');
   const quote = await actions.readMarsSwapQuote(contractSession, direction, amount);
-  const outputSymbol = direction === 'bnbToMars' ? 'MARSCOIN' : 'BNB';
+  const outputSymbol = direction === 'bnbToMars' ? 'MARSCOIN' : 'ETH';
   $('#swapQuoteOutput').textContent = quote.formattedOut;
   $('#swapLiquidityStatus').textContent = 'Live route · PancakeSwap V3';
   $('#marsSwapMinimum').value = quote.formattedMinimum;
@@ -565,11 +573,12 @@ $('#refreshSwapQuote').addEventListener('click', (event) => {
 });
 $('#approveClaimSwap').addEventListener('click', (event) => {
   runContractAction(event.currentTarget, 'APPROVING…', 'MarsCoin approval confirmed', async () => {
-    if ($('#marsSwapDirection').value !== 'marsToBnb') throw new Error('Approval is only required for MarsCoin → BNB');
+    if ($('#marsSwapDirection').value !== 'marsToBnb') throw new Error('Approval is only required for MarsCoin → ETH');
     await actions.approveMarsSwap(contractSession, requiredValue('#marsSwapAmount', 'MarsCoin amount'));
   });
 });
 $('#executeClaimSwap').addEventListener('click', (event) => {
+  if (!ETH_SWAP_ENABLED) return showToast('Robinhood ETH swap route is not configured');
   if (!contractSession) {
     connectWallet();
     return;
