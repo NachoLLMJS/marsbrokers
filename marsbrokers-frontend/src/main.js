@@ -680,6 +680,24 @@ $('#copyReferral').addEventListener('click', async () => {
   }
 });
 
+$('#copyMainTokenAddress').addEventListener('click', async (event) => {
+  const address = event.currentTarget.dataset.address;
+  try {
+    await navigator.clipboard.writeText(address);
+  } catch {
+    const copyBuffer = document.createElement('textarea');
+    copyBuffer.value = address;
+    copyBuffer.setAttribute('readonly', '');
+    copyBuffer.style.position = 'fixed';
+    copyBuffer.style.opacity = '0';
+    document.body.append(copyBuffer);
+    copyBuffer.select();
+    document.execCommand('copy');
+    copyBuffer.remove();
+  }
+  showToast('MARSBROKERS contract copied');
+});
+
 $$('[data-doc-target]').forEach((button) => button.addEventListener('click', () => {
   const target = button.dataset.docTarget;
   $$('[data-doc-target]').forEach((item) => item.classList.toggle('active', item === button));

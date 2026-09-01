@@ -68,23 +68,6 @@
     ]
   },
   {
-    "identity": 5,
-    "id": "MB-003-BNB",
-    "number": 3,
-    "sector": "BNB",
-    "name": "Martian 003",
-    "image": "/martians/003_martian_bnb.webp",
-    "stock": {
-      "symbol": "NVDA",
-      "name": "NVIDIA",
-      "type": "Flap tokenized stock"
-    },
-    "rewards": [
-      "NVDA",
-      "MARSCOIN"
-    ]
-  },
-  {
     "identity": 6,
     "id": "MB-003-SPACEX",
     "number": 3,
