@@ -124,12 +124,12 @@
           </section>
           <section class="operation-card mint-console">
             <div class="card-heading"><div><b>PUBLIC MINT</b><small>BNB CHAIN MAINNET · RECEIPT REQUIRED</small></div><span class="status-neutral">LIVE</span></div>
-            <div class="mint-price"><span>MINT PRICE</span><b>0.035 <small>BNB</small></b><em>+ network gas</em></div>
+            <div class="mint-price"><span>MINT PRICE</span><b>0.035 <small>ETH</small></b><em>+ network gas</em></div>
             <label class="mint-referral"><span>REFERRER</span><div><input id="mintReferrer" readonly value="No referral in this URL"/><small>A valid holder referral may activate the contract's 2-for-1 route.</small></div></label>
             <div class="mint-wallet-state"><span>CONNECTED WALLET</span><b id="mintWalletState">NOT CONNECTED</b></div>
-            <div class="mint-actions"><button class="ghost compact" id="mintConnect">CONNECT WALLET</button><button class="wide-action mint-submit" id="mintBroker" disabled>MINT BROKER · 0.035 BNB</button></div>
+            <div class="mint-actions"><button class="ghost compact" id="mintConnect">CONNECT WALLET</button><button class="wide-action mint-submit" id="mintBroker" disabled>MINT BROKER · 0.035 ETH</button></div>
             <div class="mint-delivery-grid"><div><i>01</i><span><b>ERC-721 NFT</b><small>Unique token ID</small></span></div><div><i>02</i><span><b>ERC-6551 TBA</b><small>Deterministic broker wallet</small></span></div></div>
-            <div class="mint-live-facts"><div><span>ON-CHAIN SUPPLY</span><b id="mintSupply">3</b></div><div><span>COLLECTION</span><b>OPEN</b></div><div><span>PAYMENT</span><b>BNB</b></div></div>
+            <div class="mint-live-facts"><div><span>ON-CHAIN SUPPLY</span><b id="mintSupply">3</b></div><div><span>COLLECTION</span><b>OPEN</b></div><div><span>PAYMENT</span><b>ETH</b></div></div>
             <p class="mint-disclosure">Your wallet submits one payable transaction. Success is shown only after the receipt confirms. MarsBrokers does not promise stock or MARSCOIN balances at mint; those assets become claimable only after they are deposited into the NFT's TBA.</p>
             <div class="mint-result" id="mintResult" aria-live="polite"><span>MINT RESULT</span><p>Connect a wallet to mint on BNB Chain.</p></div>
             <a class="mint-contract-link" href="https://bscscan.com/address/0x8eb1F4FA6C514e3b1fecA7395b52Cf2a9768482F" target="_blank" rel="noopener noreferrer">VIEW NFT CONTRACT ON BSCSCAN ↗</a>
@@ -138,7 +138,7 @@
       </section>
 
       <section class="module" id="module-market" data-module-panel="market">
-        <div class="module-header"><div><span class="overline">NFT + TOKEN-BOUND BENEFITS</span><h1>NFT Market</h1><p>Trade each broker together with control of its ERC-6551 wallet and unclaimed fee-funded benefits</p></div><div class="header-actions"><button class="primary compact" data-module-link="mint">MINT · 0.035 BNB</button><button class="ghost compact" id="myBrokers">MY BROKERS</button><button class="ghost compact" id="listBroker">LIST A BROKER +</button></div></div>
+        <div class="module-header"><div><span class="overline">NFT + TOKEN-BOUND BENEFITS</span><h1>NFT Market</h1><p>Trade each broker together with control of its ERC-6551 wallet and unclaimed fee-funded benefits</p></div><div class="header-actions"><button class="primary compact" data-module-link="mint">MINT · 0.035 ETH</button><button class="ghost compact" id="myBrokers">MY BROKERS</button><button class="ghost compact" id="listBroker">LIST A BROKER +</button></div></div>
         <div class="market-toolbar">
           <div class="market-tabs"><button class="active">EXPLORE</button><button>RECENT SALES</button><button>ACTIVITY</button></div>
           <div class="market-controls"><input id="marketSearch" placeholder="Search broker #" /><select id="marketSignal"><option value="ALL">All signals</option><option>BNB</option><option>TESLA</option><option>NVIDIA</option><option>SPACEX</option></select><select><option>Price: low to high</option><option>Recently listed</option></select></div>
@@ -442,7 +442,7 @@
     </main>
   </div>
 
-  <dialog class="nft-modal" id="nftModal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="nft-modal-image"><img id="modalImage" src="/martians/001_martian_bnb.webp" alt="Selected MarsBroker"/><span>BROKER DOSSIER</span></div><div class="nft-modal-content"><span id="modalSignal">MARSBROKER</span><h2 id="modalTitle">MARTIAN 001</h2><div class="modal-price"><small>PRICE</small><b id="modalPrice">— BNB</b></div><dl><div><dt>Broker ID</dt><dd id="modalId">—</dd></div><div><dt>Wallet protocol</dt><dd>ERC-6551</dd></div><div><dt>Predetermined stock</dt><dd id="modalStock">—</dd></div><div><dt>Stock claimable</dt><dd>—</dd></div><div><dt>Marscoin claimable</dt><dd>—</dd></div></dl><div class="modal-disclosure">The NFT controls its token-bound wallet. Flap fees buy its predetermined stock and route the asset to the broker TBA. A sale transfers wallet control and unclaimed benefits to the buyer</div><button class="wide-action" id="modalBuy" disabled>NOT LISTED</button></div></dialog>
+  <dialog class="nft-modal" id="nftModal"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="nft-modal-image"><img id="modalImage" src="/martians/001_martian_bnb.webp" alt="Selected MarsBroker"/><span>BROKER DOSSIER</span></div><div class="nft-modal-content"><span id="modalSignal">MARSBROKER</span><h2 id="modalTitle">MARTIAN 001</h2><div class="modal-price"><small>PRICE</small><b id="modalPrice">— ETH</b></div><dl><div><dt>Broker ID</dt><dd id="modalId">—</dd></div><div><dt>Wallet protocol</dt><dd>ERC-6551</dd></div><div><dt>Predetermined stock</dt><dd id="modalStock">—</dd></div><div><dt>Stock claimable</dt><dd>—</dd></div><div><dt>Marscoin claimable</dt><dd>—</dd></div></dl><div class="modal-disclosure">The NFT controls its token-bound wallet. Flap fees buy its predetermined stock and route the asset to the broker TBA. A sale transfers wallet control and unclaimed benefits to the buyer</div><button class="wide-action" id="modalBuy" disabled>NOT LISTED</button></div></dialog>
   <div id="google_translate_element" class="translate-engine" aria-hidden="true"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>

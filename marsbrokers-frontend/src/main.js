@@ -288,10 +288,10 @@ function openNftModal(item, price) {
   $('#modalTitle').textContent = item.name.toUpperCase();
   $('#modalId').textContent = item.id;
   $('#modalStock').textContent = `$${item.stock.symbol} · ${item.stock.name}`;
-  $('#modalPrice').textContent = price ? `${price} BNB` : 'NOT LISTED';
+  $('#modalPrice').textContent = price ? `${price} ETH` : 'NOT LISTED';
   const buyButton = $('#modalBuy');
   buyButton.disabled = !contractSession || !item.listed;
-  buyButton.textContent = item.listed ? `BUY · ${price} BNB` : 'NOT LISTED';
+  buyButton.textContent = item.listed ? `BUY · ${price} ETH` : 'NOT LISTED';
   $('#nftModal').showModal();
 }
 
@@ -345,7 +345,7 @@ function renderMarket() {
     const label = document.createElement('small');
     label.textContent = listed ? 'PRICE' : 'STATUS';
     const value = document.createElement('b');
-    value.textContent = listed ? `${price} BNB` : '—';
+    value.textContent = listed ? `${price} ETH` : '—';
     priceRow.append(label, value);
     info.append(signalText, heading, benefits, priceRow);
     card.append(tag, image, info);
@@ -401,10 +401,10 @@ $('#listBroker').addEventListener('click', (event) => {
   if (!contractSession) return;
   const tokenIdRaw = window.prompt('MarsBroker token ID to list');
   if (tokenIdRaw === null) return;
-  const priceBnb = window.prompt('Listing price in BNB');
+  const priceBnb = window.prompt('Listing price in ETH');
   if (priceBnb === null) return;
   if (!/^\d+$/.test(tokenIdRaw.trim()) || BigInt(tokenIdRaw.trim()) <= 0n || !/^(?:\d+\.?\d*|\.\d+)$/.test(priceBnb.trim()) || Number(priceBnb) <= 0) {
-    showToast('Enter a valid token ID and positive BNB price');
+    showToast('Enter a valid token ID and positive ETH price');
     return;
   }
   if (!window.confirm('This sends two transactions: marketplace approval, then the listing. Continue?')) return;
