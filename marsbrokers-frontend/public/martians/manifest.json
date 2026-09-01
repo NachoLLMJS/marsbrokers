@@ -9,7 +9,7 @@
     "stock": {
       "symbol": "AAPL",
       "name": "Apple",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AAPL",
@@ -26,7 +26,7 @@
     "stock": {
       "symbol": "AAPL",
       "name": "Apple",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AAPL",
@@ -43,7 +43,7 @@
     "stock": {
       "symbol": "AMZN",
       "name": "Amazon",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AMZN",
@@ -60,7 +60,7 @@
     "stock": {
       "symbol": "AMZN",
       "name": "Amazon",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AMZN",
@@ -77,7 +77,7 @@
     "stock": {
       "symbol": "NVDA",
       "name": "NVIDIA",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "NVDA",
@@ -94,7 +94,7 @@
     "stock": {
       "symbol": "MSFT",
       "name": "Microsoft",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "MSFT",
@@ -111,7 +111,7 @@
     "stock": {
       "symbol": "MSFT",
       "name": "Microsoft",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "MSFT",
@@ -128,7 +128,7 @@
     "stock": {
       "symbol": "PLTR",
       "name": "Palantir",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "PLTR",
@@ -145,7 +145,7 @@
     "stock": {
       "symbol": "PLTR",
       "name": "Palantir",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "PLTR",
@@ -162,7 +162,7 @@
     "stock": {
       "symbol": "AMD",
       "name": "Advanced Micro Devices",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AMD",
@@ -179,7 +179,7 @@
     "stock": {
       "symbol": "AMD",
       "name": "Advanced Micro Devices",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AMD",
@@ -196,7 +196,7 @@
     "stock": {
       "symbol": "AMD",
       "name": "Advanced Micro Devices",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "AMD",
@@ -213,7 +213,7 @@
     "stock": {
       "symbol": "TSLA",
       "name": "Tesla",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "TSLA",
@@ -230,7 +230,7 @@
     "stock": {
       "symbol": "TSLA",
       "name": "Tesla",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "TSLA",
@@ -247,7 +247,7 @@
     "stock": {
       "symbol": "TSLA",
       "name": "Tesla",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "TSLA",
@@ -264,7 +264,7 @@
     "stock": {
       "symbol": "TSLA",
       "name": "Tesla",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "TSLA",
@@ -281,7 +281,7 @@
     "stock": {
       "symbol": "GME",
       "name": "GameStop",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "GME",
@@ -298,7 +298,7 @@
     "stock": {
       "symbol": "GME",
       "name": "GameStop",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "GME",
@@ -315,7 +315,7 @@
     "stock": {
       "symbol": "GME",
       "name": "GameStop",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "GME",
@@ -332,7 +332,7 @@
     "stock": {
       "symbol": "GME",
       "name": "GameStop",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "GME",
@@ -349,7 +349,7 @@
     "stock": {
       "symbol": "USAR",
       "name": "USA Rare Earth",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "USAR",
@@ -366,7 +366,7 @@
     "stock": {
       "symbol": "USAR",
       "name": "USA Rare Earth",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "USAR",
@@ -383,7 +383,7 @@
     "stock": {
       "symbol": "USAR",
       "name": "USA Rare Earth",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "USAR",
@@ -400,7 +400,7 @@
     "stock": {
       "symbol": "USAR",
       "name": "USA Rare Earth",
-      "type": "Flap tokenized stock"
+      "type": "Robinhood tokenized stock"
     },
     "rewards": [
       "USAR",
